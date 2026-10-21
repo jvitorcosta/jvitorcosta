@@ -2,7 +2,7 @@
 
 # Hi, I'm Vitor 👋
 
-📄 **[My resume (PDF)](https://github.com/jvitorcosta/curriculum-vitae/blob/main/resume/Vitor_Pinheiro_Resume.pdf)** · [resume repo](https://github.com/jvitorcosta/curriculum-vitae)
+📄 **[My resume (PDF)](https://github.com/jvitorcosta/jvitorcosta/blob/main/Vitor_Pinheiro_Resume.pdf)**
 
 João Vitor Pinheiro, but call me Vitor. I also have a Chinese name: 白玉龙.
 
