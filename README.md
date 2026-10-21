@@ -29,10 +29,6 @@ Learning machine learning and Mandarin (中文), slowly. *Dios me trabaja a fueg
 
 <br clear="right">
 
-<p align="center">
-  <img src="charizard.svg" width="140" alt="Pixel-art Charizard with a flickering tail flame">
-</p>
-
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/jvitorcosta/jvitorcosta/output/github-snake-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/jvitorcosta/jvitorcosta/output/github-snake.svg">
