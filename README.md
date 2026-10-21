@@ -2,6 +2,8 @@
 
 # Hi, I'm Vitor 👋
 
+📄 **[My resume (PDF)](https://github.com/jvitorcosta/curriculum-vitae/blob/main/resume/Vitor_Pinheiro_Resume.pdf)** · [resume repo](https://github.com/jvitorcosta/curriculum-vitae)
+
 João Vitor Pinheiro, but call me Vitor. I also have a Chinese name: 白玉龙.
 
 Python developer from Manaus, Brazil. I like building small, useful tools:
