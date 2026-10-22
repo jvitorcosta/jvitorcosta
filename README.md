@@ -24,9 +24,6 @@ APIs, data apps, and the occasional hardware side project.
 - [clone-tabnews](https://github.com/jvitorcosta/clone-tabnews): tabnews companion repo · <sub>Jul 2025</sub>
 <!-- RECENT:END -->
 
-### Right now
-Learning machine learning and Mandarin (中文), slowly. *Dios me trabaja a fuego lento.*
-
 📫 [LinkedIn](https://www.linkedin.com/in/jvpro/)
 
 <br clear="right">
