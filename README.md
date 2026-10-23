@@ -6,8 +6,11 @@
 
 João Vitor Pinheiro, but call me Vitor. I also have a Chinese name: 白玉龙.
 
-Python developer from Manaus, Brazil. I like building small, useful tools:
-APIs, data apps, and the occasional hardware side project.
+AI/ML engineer with 5 years building production ML and LLM systems in fintech:
+fraud detection for a US bank, LLM support agents and credit-risk tooling at Nubank.
+Python, Spark, Databricks, LangGraph. Based in Manaus, Brazil (UTC-4), open to remote roles.
+
+Outside work I like building small, useful tools: APIs, data apps, and the occasional hardware side project.
 
 ### Things I've built
 - **[CarDeck](https://github.com/jvitorcosta/spotify-car-deck)**: a Spotify deck for my car, with Pokémon lore (C++)
@@ -24,7 +27,7 @@ APIs, data apps, and the occasional hardware side project.
 - [clone-tabnews](https://github.com/jvitorcosta/clone-tabnews): tabnews companion repo · <sub>Jul 2025</sub>
 <!-- RECENT:END -->
 
-📫 [LinkedIn](https://www.linkedin.com/in/jvpro/)
+📫 [LinkedIn](https://www.linkedin.com/in/jvpro/) · joaovpro17@gmail.com
 
 <br clear="right">
 
