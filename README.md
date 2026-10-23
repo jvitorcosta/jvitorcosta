@@ -17,7 +17,7 @@ APIs, data apps, and the occasional hardware side project.
 
 ### Lately I've been pushing to
 <!-- RECENT:START -->
-- [spotify-car-deck](https://github.com/jvitorcosta/spotify-car-deck): A compact and fun spotify deck with Pokémon lore envisioned to be onboarded in a car cockpit · <sub>Oct 22</sub>
+- [spotify-car-deck](https://github.com/jvitorcosta/spotify-car-deck): A compact and fun spotify deck with Pokémon lore envisioned to be onboarded in a car cockpit · <sub>Oct 23</sub>
 - [python-uv-claude-template](https://github.com/jvitorcosta/python-uv-claude-template): Copier template: Python + uv + ruff + mypy + pytest + Makefile + full Claude Code setup · <sub>Oct 21</sub>
 - [interview-api](https://github.com/jvitorcosta/interview-api) · <sub>Oct 20</sub>
 - [or-solver-streamlit](https://github.com/jvitorcosta/or-solver-streamlit): Modern Operations Research solver with academic-standard syntax for linear programming problems. · <sub>Dec 2025</sub>
