@@ -20,7 +20,7 @@ Outside work I like building small, useful tools: APIs, data apps, and the occas
 
 ### Lately I've been pushing to
 <!-- RECENT:START -->
-- [spotify-car-deck](https://github.com/jvitorcosta/spotify-car-deck): ESP32 firmware that shows Spotify now-playing as a Pokémon battle, with synced lyrics, a companion screen and a read-only Bluetooth OBD gauge cluster · <sub>Oct 24</sub>
+- [spotify-car-deck](https://github.com/jvitorcosta/spotify-car-deck): ESP32 firmware that shows Spotify now-playing as a Pokémon battle, with synced lyrics, a companion screen and a read-only Bluetooth OBD gauge cluster · <sub>Oct 26</sub>
 - [jvitorcosta.github.io](https://github.com/jvitorcosta/jvitorcosta.github.io): Vitor Pinheiro, AI/ML engineer: personal website · <sub>Oct 23</sub>
 - [or-solver-streamlit](https://github.com/jvitorcosta/or-solver-streamlit): Modern Operations Research solver with academic-standard syntax for linear programming problems. · <sub>Oct 23</sub>
 - [timeseries-analysis-streamlit](https://github.com/jvitorcosta/timeseries-analysis-streamlit): Streamlit app for evaluating time-series forecasting models · <sub>Oct 23</sub>
