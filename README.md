@@ -13,9 +13,9 @@ Python, Spark, Databricks, LangGraph. Based in Manaus, Brazil (UTC-4), open to r
 Outside work I like building small, useful tools: APIs, data apps, and the occasional hardware side project.
 
 ### Things I've built
-- **[CarDeck](https://github.com/jvitorcosta/spotify-car-deck)**: a Spotify deck for my car, with Pokémon lore (C++)
-- **[OR Solver](https://github.com/jvitorcosta/or-solver-streamlit)**: linear programming in the browser (Python, Streamlit)
-- **[Sales & stock system](https://github.com/jvitorcosta/sales-stock-system)**: stock control for my family's store
+- **[CarDeck](https://github.com/jvitorcosta/spotify-car-deck)**: a taste of Pokémon nostalgia on my car's dashboard (ESP32, C++)
+- **[SolvedOR](https://github.com/jvitorcosta/or-solver-streamlit)**: my bachelor thesis, an app that teaches Operations Research (Python, Streamlit, OR-Tools)
+- **[My resume, as code](https://jvitorcosta.github.io/projects/resume-as-code.html)**: one Markdown record, tailored PDFs, nothing invented (Python, pandoc, Typst)
 - **[python-uv-claude-template](https://github.com/jvitorcosta/python-uv-claude-template)**: how I start every Python project
 
 ### Lately I've been pushing to
