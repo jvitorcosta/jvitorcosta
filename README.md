@@ -6,8 +6,6 @@ Tinkering with a few things here.
 
 More about me on 🌐 **[jvitorcosta.github.io](https://jvitorcosta.github.io)**
 
-<a href="https://spotify-now-playing-ashen-two.vercel.app/redirect"><img src="https://spotify-now-playing-ashen-two.vercel.app/api/orchestrator" alt="What I am listening to on Spotify right now" width="420"></a>
-
 ### Some of my work
 - **[car-cyberdeck](https://github.com/jvitorcosta/car-cyberdeck)**: a taste of Pokémon nostalgia on my car's dashboard (ESP32, C++)
 - **[car-can-lab](https://github.com/jvitorcosta/car-can-lab)**: listening to my car's CAN bus over Bluetooth to find its signals (ESP32, Python)
@@ -34,4 +32,8 @@ More about me on 🌐 **[jvitorcosta.github.io](https://jvitorcosta.github.io)**
   <img alt="Snake eating my contribution graph" src="https://raw.githubusercontent.com/jvitorcosta/jvitorcosta/output/github-snake.svg">
 </picture>
 
-<sub>Card by <a href="https://github.com/Leorev01/pokemon-profile-card">pokemon-profile-card</a> · snake by <a href="https://github.com/Platane/snk">Platane/snk</a> · "Lately" section refreshed daily by GitHub Actions</sub>
+<p align="center">
+  <a href="https://spotify-now-playing-ashen-two.vercel.app/redirect"><img src="https://spotify-now-playing-ashen-two.vercel.app/api/orchestrator" alt="What I am listening to on Spotify right now" width="420"></a>
+</p>
+
+<sub>Card by <a href="https://github.com/Leorev01/pokemon-profile-card">pokemon-profile-card</a> · snake by <a href="https://github.com/Platane/snk">Platane/snk</a> · now playing by <a href="https://github.com/novatorem/novatorem">novatorem</a> · "Lately" section refreshed daily by GitHub Actions</sub>
