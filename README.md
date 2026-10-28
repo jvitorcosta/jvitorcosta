@@ -15,10 +15,10 @@ More about me on 🌐 **[jvitorcosta.github.io](https://jvitorcosta.github.io)**
 
 ### Lately I've been pushing to
 <!-- RECENT:START -->
-- [jvitorcosta.github.io](https://github.com/jvitorcosta/jvitorcosta.github.io): Vitor Pinheiro, AI/ML engineer: personal website · <sub>Oct 28</sub>
-- [car-cyberdeck](https://github.com/jvitorcosta/car-cyberdeck): ESP32 firmware that shows Spotify now-playing as a Pokémon battle, with synced lyrics, a companion screen and a read-only Bluetooth OBD gauge cluster · <sub>Oct 28</sub>
 - [garmin-watchfaces](https://github.com/jvitorcosta/garmin-watchfaces): Connect IQ watch faces for the Garmin Forerunner 255 (Pokéface) · <sub>Oct 28</sub>
 - [car-can-lab](https://github.com/jvitorcosta/car-can-lab): ESP32 + ELM327-over-BLE CAN bus reverse-engineering toolkit: a listen-only sniff firmware for a Cheap Yellow Display and PC tools that find signals in the recordings · <sub>Oct 28</sub>
+- [jvitorcosta.github.io](https://github.com/jvitorcosta/jvitorcosta.github.io): Vitor Pinheiro, AI/ML engineer: personal website · <sub>Oct 28</sub>
+- [car-cyberdeck](https://github.com/jvitorcosta/car-cyberdeck): ESP32 firmware that shows Spotify now-playing as a Pokémon battle, with synced lyrics, a companion screen and a read-only Bluetooth OBD gauge cluster · <sub>Oct 28</sub>
 - [or-solver-streamlit](https://github.com/jvitorcosta/or-solver-streamlit): SolvedOR: solve linear and integer programs written like a textbook, in the browser. Live at solvedor.streamlit.app · <sub>Oct 28</sub>
 <!-- RECENT:END -->
 
