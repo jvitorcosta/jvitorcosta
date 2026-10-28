@@ -2,20 +2,15 @@
 
 # Hi, I'm Vitor 👋
 
-🌐 **[jvitorcosta.github.io](https://jvitorcosta.github.io)**
+Tinkering with a few things here.
 
-João Vitor Pinheiro, but call me Vitor. I also have a Chinese name: 白玉龙.
+More about me on 🌐 **[jvitorcosta.github.io](https://jvitorcosta.github.io)**
 
-AI/ML engineer with 5 years building production ML and LLM systems in fintech:
-fraud detection for a US bank, LLM support agents and credit-risk tooling at Nubank.
-Python, Spark, Databricks, LangGraph. Based in Manaus, Brazil (UTC-4), open to remote roles.
-
-Outside work I like building small, useful tools: APIs, data apps, and the occasional hardware side project.
-
-### Things I've built
+### Some of my work
 - **[car-cyberdeck](https://github.com/jvitorcosta/car-cyberdeck)**: a taste of Pokémon nostalgia on my car's dashboard (ESP32, C++)
-- **[SolvedOR](https://github.com/jvitorcosta/or-solver-streamlit)**: my bachelor thesis, an app that teaches Operations Research (Python, Streamlit, OR-Tools)
-- **[My resume, as code](https://jvitorcosta.github.io/projects/resume-as-code.html)**: one Markdown record, tailored PDFs, nothing invented (Python, pandoc, Typst)
+- **[car-can-lab](https://github.com/jvitorcosta/car-can-lab)**: listening to my car's CAN bus over Bluetooth to find its signals (ESP32, Python)
+- **[or-solver-streamlit](https://github.com/jvitorcosta/or-solver-streamlit)**: SolvedOR, my bachelor thesis, an app that teaches Operations Research. [Try it live](https://solvedor.streamlit.app) (Python, Streamlit, OR-Tools)
+- **[interview-api](https://github.com/jvitorcosta/interview-api)**: answers questions with a local LLM, grounded in a small knowledge base (FastAPI, Ollama)
 - **[python-uv-claude-template](https://github.com/jvitorcosta/python-uv-claude-template)**: how I start every Python project
 
 ### Lately I've been pushing to
