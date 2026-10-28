@@ -12,7 +12,7 @@ More about me on 🌐 **[jvitorcosta.github.io](https://jvitorcosta.github.io)**
 - **[car-cyberdeck](https://github.com/jvitorcosta/car-cyberdeck)**: a taste of Pokémon nostalgia on my car's dashboard (ESP32, C++)
 - **[car-can-lab](https://github.com/jvitorcosta/car-can-lab)**: listening to my car's CAN bus over Bluetooth to find its signals (ESP32, Python)
 - **[or-solver-streamlit](https://github.com/jvitorcosta/or-solver-streamlit)**: SolvedOR, my bachelor thesis, an app that teaches Operations Research. [Try it live](https://solvedor.streamlit.app) (Python, Streamlit, OR-Tools)
-- **[interview-api](https://github.com/jvitorcosta/interview-api)**: answers questions with a local LLM, grounded in a small knowledge base (FastAPI, Ollama)
+- **[ask-vitor](https://github.com/jvitorcosta/ask-vitor)**: ask a local LLM about me; it answers only from my CV and says so when it doesn't know (FastAPI, Ollama)
 - **[python-uv-claude-template](https://github.com/jvitorcosta/python-uv-claude-template)**: how I start every Python project
 
 ### Lately I've been pushing to
