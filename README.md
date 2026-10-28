@@ -2,7 +2,9 @@
 
 # Hi, I'm Vitor 👋
 
-Tinkering with a few things here.
+AI/ML engineer with 5 years of production ML and LLM systems in fintech (Nubank, fraud for a US bank). Open to remote roles.
+
+Here I tinker with a few things on the side.
 
 More about me on 🌐 **[jvitorcosta.github.io](https://jvitorcosta.github.io)**
 
