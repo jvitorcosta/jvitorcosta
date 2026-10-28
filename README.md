@@ -13,14 +13,14 @@ Python, Spark, Databricks, LangGraph. Based in Manaus, Brazil (UTC-4), open to r
 Outside work I like building small, useful tools: APIs, data apps, and the occasional hardware side project.
 
 ### Things I've built
-- **[CarDeck](https://github.com/jvitorcosta/spotify-car-deck)**: a taste of Pokémon nostalgia on my car's dashboard (ESP32, C++)
+- **[car-cyberdeck](https://github.com/jvitorcosta/car-cyberdeck)**: a taste of Pokémon nostalgia on my car's dashboard (ESP32, C++)
 - **[SolvedOR](https://github.com/jvitorcosta/or-solver-streamlit)**: my bachelor thesis, an app that teaches Operations Research (Python, Streamlit, OR-Tools)
 - **[My resume, as code](https://jvitorcosta.github.io/projects/resume-as-code.html)**: one Markdown record, tailored PDFs, nothing invented (Python, pandoc, Typst)
 - **[python-uv-claude-template](https://github.com/jvitorcosta/python-uv-claude-template)**: how I start every Python project
 
 ### Lately I've been pushing to
 <!-- RECENT:START -->
-- [spotify-car-deck](https://github.com/jvitorcosta/spotify-car-deck): ESP32 firmware that shows Spotify now-playing as a Pokémon battle, with synced lyrics, a companion screen and a read-only Bluetooth OBD gauge cluster · <sub>Oct 27</sub>
+- [car-cyberdeck](https://github.com/jvitorcosta/car-cyberdeck): ESP32 firmware that shows Spotify now-playing as a Pokémon battle, with synced lyrics, a companion screen and a read-only Bluetooth OBD gauge cluster · <sub>Oct 27</sub>
 - [jvitorcosta.github.io](https://github.com/jvitorcosta/jvitorcosta.github.io): Vitor Pinheiro, AI/ML engineer: personal website · <sub>Oct 23</sub>
 - [or-solver-streamlit](https://github.com/jvitorcosta/or-solver-streamlit): Modern Operations Research solver with academic-standard syntax for linear programming problems. · <sub>Oct 23</sub>
 - [timeseries-analysis-streamlit](https://github.com/jvitorcosta/timeseries-analysis-streamlit): Streamlit app for evaluating time-series forecasting models · <sub>Oct 23</sub>
