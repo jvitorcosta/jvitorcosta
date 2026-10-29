@@ -17,11 +17,11 @@ More about me on 🌐 **[jvitorcosta.github.io](https://jvitorcosta.github.io)**
 
 ### Lately I've been pushing to
 <!-- RECENT:START -->
-- [loan-EDA-python](https://github.com/jvitorcosta/loan-EDA-python): Exploratory analysis of loan default data before a credit-risk model: missing values, categorical and continuous variables, outliers and bias · <sub>Oct 28</sub>
+- [car-cyberdeck](https://github.com/jvitorcosta/car-cyberdeck): Cyberdeck for my car: two ESP32 touchscreens and a Garmin app. Spotify as a Pokémon battle with synced lyrics, and the car's LED lights by touch, voice, gamepad or watch · <sub>Oct 29</sub>
+- [fraud-alert-explainer](https://github.com/jvitorcosta/fraud-alert-explainer): LightGBM card-fraud model with SHAP-grounded, LLM-written alert explanations and a deterministic grounding check, on public simulated data. · <sub>Oct 29</sub>
+- [ask-vitor](https://github.com/jvitorcosta/ask-vitor): Ask questions about me: a FastAPI service that answers with a local LLM (Ollama), grounded only in my CV · <sub>Oct 29</sub>
+- [garmin-watchfaces](https://github.com/jvitorcosta/garmin-watchfaces): Connect IQ watch faces for the Garmin Forerunner 255 · <sub>Oct 29</sub>
 - [or-solver-streamlit](https://github.com/jvitorcosta/or-solver-streamlit): SolvedOR: solve linear and integer programs written like a textbook, in the browser. Live at solvedor.streamlit.app · <sub>Oct 28</sub>
-- [timeseries-analysis-streamlit](https://github.com/jvitorcosta/timeseries-analysis-streamlit): Streamlit app to evaluate time-series forecasts: MAPE by group and period, residual analysis and comparison with a benchmark forecast · <sub>Oct 28</sub>
-- [ask-vitor](https://github.com/jvitorcosta/ask-vitor): Ask questions about me: a FastAPI service that answers with a local LLM (Ollama), grounded only in my CV · <sub>Oct 28</sub>
-- [python-uv-claude-template](https://github.com/jvitorcosta/python-uv-claude-template): Copier template for new Python projects: uv, Ruff, strict mypy, pytest, pre-commit, CI on three OSes and a full Claude Code setup · <sub>Oct 28</sub>
 <!-- RECENT:END -->
 
 📫 [LinkedIn](https://www.linkedin.com/in/jvpro/) · joaovpro17@gmail.com
