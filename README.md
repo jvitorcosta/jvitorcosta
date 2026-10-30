@@ -9,6 +9,7 @@ Here I tinker with a few things on the side.
 More about me on 🌐 **[jvitorcosta.github.io](https://jvitorcosta.github.io)**
 
 ### Some of my work
+- **[fraud-alert-explainer](https://github.com/jvitorcosta/fraud-alert-explainer)**: a LightGBM fraud model whose alerts are explained by SHAP and a local LLM, with a check that the explanations stay grounded, on public simulated data (Python, LightGBM, Ollama)
 - **[car-cyberdeck](https://github.com/jvitorcosta/car-cyberdeck)**: a taste of Pokémon nostalgia on my car's dashboard (ESP32, C++)
 - **[car-can-lab](https://github.com/jvitorcosta/car-can-lab)**: listening to my car's CAN bus over Bluetooth to find its signals (ESP32, Python)
 - **[or-solver-streamlit](https://github.com/jvitorcosta/or-solver-streamlit)**: SolvedOR, my bachelor thesis, an app that teaches Operations Research. [Try it live](https://solvedor.streamlit.app) (Python, Streamlit, OR-Tools)
