@@ -18,11 +18,11 @@ More about me on 🌐 **[jvitorcosta.github.io](https://jvitorcosta.github.io)**
 
 ### Lately I've been pushing to
 <!-- RECENT:START -->
-- [garmin-watchfaces](https://github.com/jvitorcosta/garmin-watchfaces): Connect IQ watch faces for the Garmin Forerunner 255 · <sub>Oct 30</sub>
+- [or-solver-streamlit](https://github.com/jvitorcosta/or-solver-streamlit): SolvedOR: solve linear and integer programs written like a textbook, in the browser. Live at solvedor.streamlit.app · <sub>Oct 30</sub>
+- [fraud-alert-explainer](https://github.com/jvitorcosta/fraud-alert-explainer): LightGBM card-fraud model with SHAP-grounded, LLM-written alert explanations and a deterministic grounding check, on public simulated data. · <sub>Oct 30</sub>
 - [car-cyberdeck](https://github.com/jvitorcosta/car-cyberdeck): Cyberdeck for my car: two ESP32 touchscreens and a Garmin app. Spotify as a Pokémon battle with synced lyrics, and the car's LED lights by touch, voice, gamepad or watch · <sub>Oct 30</sub>
-- [jvitorcosta.github.io](https://github.com/jvitorcosta/jvitorcosta.github.io): Personal website of Vitor Pinheiro, AI/ML engineer: project case studies with screenshots and live demos · <sub>Oct 29</sub>
-- [fraud-alert-explainer](https://github.com/jvitorcosta/fraud-alert-explainer): LightGBM card-fraud model with SHAP-grounded, LLM-written alert explanations and a deterministic grounding check, on public simulated data. · <sub>Oct 29</sub>
-- [python-uv-claude-template](https://github.com/jvitorcosta/python-uv-claude-template): Copier template for new Python projects: uv, Ruff, strict mypy, pytest, pre-commit, CI on three OSes and a full Claude Code setup · <sub>Oct 29</sub>
+- [python-uv-claude-template](https://github.com/jvitorcosta/python-uv-claude-template): Copier template for new Python projects: uv, Ruff, strict mypy, pytest, pre-commit, CI on three OSes and a full Claude Code setup · <sub>Oct 30</sub>
+- [garmin-watchfaces](https://github.com/jvitorcosta/garmin-watchfaces): Connect IQ watch faces for the Garmin Forerunner 255 · <sub>Oct 30</sub>
 <!-- RECENT:END -->
 
 📫 [LinkedIn](https://www.linkedin.com/in/jvpro/) · joaovpro17@gmail.com
