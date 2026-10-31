@@ -18,11 +18,11 @@ More about me on 🌐 **[jvitorcosta.github.io](https://jvitorcosta.github.io)**
 
 ### Lately I've been pushing to
 <!-- RECENT:START -->
-- [car-can-lab](https://github.com/jvitorcosta/car-can-lab): Listen-only CAN bus reverse-engineering toolkit: ESP32 firmware over a Bluetooth ELM327 adapter and PC tools that find undocumented signals, like the gear or fuel level, in your recordings · <sub>Oct 31</sub>
 - [car-cyberdeck](https://github.com/jvitorcosta/car-cyberdeck): Cyberdeck for my car: two ESP32 touchscreens and a Garmin app. Spotify as a Pokémon battle with synced lyrics, and the car's LED lights by touch, voice, gamepad or watch · <sub>Oct 31</sub>
-- [or-solver-streamlit](https://github.com/jvitorcosta/or-solver-streamlit): SolvedOR: solve linear and integer programs written like a textbook, in the browser. Live at solvedor.streamlit.app · <sub>Oct 30</sub>
-- [python-uv-claude-template](https://github.com/jvitorcosta/python-uv-claude-template): Copier template for new Python projects: uv, Ruff, strict mypy, pytest, pre-commit, CI on three OSes and a full Claude Code setup · <sub>Oct 30</sub>
-- [garmin-watchfaces](https://github.com/jvitorcosta/garmin-watchfaces): Connect IQ watch faces for the Garmin Forerunner 255 · <sub>Oct 30</sub>
+- [haylou-faces](https://github.com/jvitorcosta/haylou-faces): Juma, a jaguar cub watch face for the Haylou RT (LS05S). · <sub>Oct 31</sub>
+- [timeseries-analysis-streamlit](https://github.com/jvitorcosta/timeseries-analysis-streamlit): Streamlit app to evaluate time-series forecasts: MAPE by group and period, residual analysis and comparison with a benchmark forecast · <sub>Oct 31</sub>
+- [haylou-rt-tools](https://github.com/jvitorcosta/haylou-rt-tools): Unofficial tools for the Haylou RT (LS05S) watch: BLE protocol, .tbwf watch faces and a text preview. · <sub>Oct 31</sub>
+- [car-can-lab](https://github.com/jvitorcosta/car-can-lab): Listen-only CAN bus reverse-engineering toolkit: ESP32 firmware over a Bluetooth ELM327 adapter and PC tools that find undocumented signals, like the gear or fuel level, in your recordings · <sub>Oct 31</sub>
 <!-- RECENT:END -->
 
 📫 [LinkedIn](https://www.linkedin.com/in/jvpro/) · joaovpro17@gmail.com
