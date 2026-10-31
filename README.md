@@ -9,6 +9,7 @@ Here I tinker with a few things on the side.
 More about me on 🌐 **[jvitorcosta.github.io](https://jvitorcosta.github.io)**
 
 ### Some of my work
+- **[timeseries-analysis-streamlit](https://github.com/jvitorcosta/timeseries-analysis-streamlit)**: shows where a daily forecast goes wrong: by series, weekday and holiday, and against a benchmark. [Try it live](https://forecast-error-analysis.streamlit.app) (Python, Streamlit, Plotly)
 - **[car-cyberdeck](https://github.com/jvitorcosta/car-cyberdeck)**: a taste of Pokémon nostalgia on my car's dashboard (ESP32, C++)
 - **[car-can-lab](https://github.com/jvitorcosta/car-can-lab)**: listening to my car's CAN bus over Bluetooth to find its signals (ESP32, Python)
 - **[or-solver-streamlit](https://github.com/jvitorcosta/or-solver-streamlit)**: SolvedOR, my bachelor thesis, an app that teaches Operations Research. [Try it live](https://solvedor.streamlit.app) (Python, Streamlit, OR-Tools)
