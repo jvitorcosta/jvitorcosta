@@ -19,6 +19,7 @@ USER = os.environ.get("GH_USER", "jvitorcosta")
 README = Path(__file__).resolve().parent.parent / "README.md"
 START, END = "<!-- RECENT:START -->", "<!-- RECENT:END -->"
 LIMIT = 5
+HIDDEN = {"fraud-alert-explainer"}
 
 
 def fetch_repos() -> list[dict]:
@@ -38,7 +39,9 @@ def when(pushed_at: str, now: datetime) -> str:
 def render(repos: list[dict]) -> str:
     now = datetime.now(UTC)
     picked = [
-        r for r in repos if not r["fork"] and not r["archived"] and r["name"] != USER
+        r
+        for r in repos
+        if not r["fork"] and not r["archived"] and r["name"] != USER and r["name"] not in HIDDEN
     ][:LIMIT]
     lines = []
     for r in picked:
