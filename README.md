@@ -17,8 +17,8 @@ More about me on 🌐 **[jvitorcosta.github.io](https://jvitorcosta.github.io)**
 
 ### Lately I've been pushing to
 <!-- RECENT:START -->
+- [car-can-lab](https://github.com/jvitorcosta/car-can-lab): Listen-only CAN bus reverse-engineering toolkit: ESP32 firmware over a Bluetooth ELM327 adapter and PC tools that find undocumented signals, like the gear or fuel level, in your recordings · <sub>Oct 31</sub>
 - [car-cyberdeck](https://github.com/jvitorcosta/car-cyberdeck): Cyberdeck for my car: two ESP32 touchscreens and a Garmin app. Spotify as a Pokémon battle with synced lyrics, and the car's LED lights by touch, voice, gamepad or watch · <sub>Oct 31</sub>
-- [car-can-lab](https://github.com/jvitorcosta/car-can-lab): Listen-only CAN bus reverse-engineering toolkit: ESP32 firmware over a Bluetooth ELM327 adapter and PC tools that find undocumented signals, like the gear or fuel level, in your recordings · <sub>Oct 30</sub>
 - [or-solver-streamlit](https://github.com/jvitorcosta/or-solver-streamlit): SolvedOR: solve linear and integer programs written like a textbook, in the browser. Live at solvedor.streamlit.app · <sub>Oct 30</sub>
 - [python-uv-claude-template](https://github.com/jvitorcosta/python-uv-claude-template): Copier template for new Python projects: uv, Ruff, strict mypy, pytest, pre-commit, CI on three OSes and a full Claude Code setup · <sub>Oct 30</sub>
 - [garmin-watchfaces](https://github.com/jvitorcosta/garmin-watchfaces): Connect IQ watch faces for the Garmin Forerunner 255 · <sub>Oct 30</sub>
