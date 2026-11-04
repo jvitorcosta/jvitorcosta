@@ -18,11 +18,11 @@ More about me on 🌐 **[jvitorcosta.github.io](https://jvitorcosta.github.io)**
 
 ### Lately I've been pushing to
 <!-- RECENT:START -->
-- [car-cyberdeck](https://github.com/jvitorcosta/car-cyberdeck): Cyberdeck for my car: two ESP32 touchscreens and a Garmin app. Spotify as a Pokémon battle with synced lyrics, and the car's LED lights by touch, voice, gamepad or watch · <sub>Nov 3</sub>
+- [open-radars-manaus](https://github.com/jvitorcosta/open-radars-manaus): Radares, lombadas eletrônicas e câmeras de avanço de sinal em Manaus: dados abertos · <sub>Nov 4</sub>
+- [car-cyberdeck](https://github.com/jvitorcosta/car-cyberdeck): Cyberdeck for my car: two ESP32 touchscreens and a Garmin app. Spotify as a Pokémon battle with synced lyrics, and the car's LED lights by touch, voice, gamepad or watch · <sub>Nov 4</sub>
 - [or-solver-streamlit](https://github.com/jvitorcosta/or-solver-streamlit): SolvedOR: solve linear and integer programs written like a textbook, in the browser. Live at solvedor.streamlit.app · <sub>Nov 3</sub>
 - [haylou-faces](https://github.com/jvitorcosta/haylou-faces): Custom watch faces for the Haylou RT (LS05S), built with haylou-rt-tools. · <sub>Oct 31</sub>
 - [haylou-rt-tools](https://github.com/jvitorcosta/haylou-rt-tools): Unofficial tools for the Haylou RT (LS05S) watch: BLE protocol, .tbwf watch faces and a text preview. · <sub>Oct 31</sub>
-- [timeseries-analysis-streamlit](https://github.com/jvitorcosta/timeseries-analysis-streamlit): Streamlit app to evaluate time-series forecasts: MAPE by group and period, residual analysis and comparison with a benchmark forecast · <sub>Oct 31</sub>
 <!-- RECENT:END -->
 
 📫 [LinkedIn](https://www.linkedin.com/in/jvpro/) · joaovpro17@gmail.com
