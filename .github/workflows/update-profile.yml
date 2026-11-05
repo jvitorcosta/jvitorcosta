@@ -28,10 +28,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_USER: ${{ github.repository_owner }}
 
+      - name: Refresh the Letterboxd card
+        run: uv run scripts/letterboxd_card.py
+        env:
+          LETTERBOXD_USER: zubu
+
       - uses: stefanzweifel/git-auto-commit-action@d0b01107b5db882071f96de5dd4b54961ea93f4c # v7.2.1
         with:
-          commit_message: "chore: refresh recent repos"
-          file_pattern: README.md
+          commit_message: "chore: refresh recent repos and Letterboxd card"
+          file_pattern: README.md assets/letterboxd.svg
           commit_user_name: github-actions[bot]
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
           commit_author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
