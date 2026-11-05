@@ -36,7 +36,8 @@ More about me on 🌐 **[jvitorcosta.github.io](https://jvitorcosta.github.io)**
 </picture>
 
 <p align="center">
-  <a href="https://spotify-now-playing-ashen-two.vercel.app/redirect"><img src="https://spotify-now-playing-ashen-two.vercel.app/api/orchestrator" alt="What I am listening to on Spotify right now" width="420"></a>
+  <a href="https://spotify-now-playing-ashen-two.vercel.app/redirect"><img src="https://spotify-now-playing-ashen-two.vercel.app/api/orchestrator" alt="What I am listening to on Spotify right now" width="400"></a>
+  <a href="https://letterboxd.com/zubu/"><img src="assets/letterboxd.svg" alt="The last film I watched, from Letterboxd" width="400"></a>
 </p>
 
-<sub>Card by <a href="https://github.com/Leorev01/pokemon-profile-card">pokemon-profile-card</a> · snake by <a href="https://github.com/Platane/snk">Platane/snk</a> · now playing by <a href="https://github.com/novatorem/novatorem">novatorem</a> · "Lately" section refreshed daily by GitHub Actions</sub>
+<sub>Card by <a href="https://github.com/Leorev01/pokemon-profile-card">pokemon-profile-card</a> · snake by <a href="https://github.com/Platane/snk">Platane/snk</a> · now playing by <a href="https://github.com/novatorem/novatorem">novatorem</a> · "Lately" section and Letterboxd card refreshed daily by GitHub Actions</sub>
