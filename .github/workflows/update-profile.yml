@@ -2,7 +2,7 @@ name: Update profile
 
 on:
   schedule:
-    - cron: "0 9 * * *" # 05:00 in Manaus
+    - cron: "0 9,21 * * *" # 05:00 and 17:00 in Manaus
   workflow_dispatch:
   push:
     branches: [main]
