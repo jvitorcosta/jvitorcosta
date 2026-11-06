@@ -16,7 +16,7 @@ More about me on 🌐 **[jvitorcosta.github.io](https://jvitorcosta.github.io)**
 
 ### Lately I've been pushing to
 <!-- RECENT:START -->
-- [jvitorcosta.github.io](https://github.com/jvitorcosta/jvitorcosta.github.io): My corner of the internet: what I'm listening to, watching and reading, and the gadgets I build. Static, rebuilt daily · <sub>Nov 5</sub>
+- [jvitorcosta.github.io](https://github.com/jvitorcosta/jvitorcosta.github.io): My corner of the internet: what I'm listening to, watching and reading, and the gadgets I build. Static, rebuilt daily · <sub>Nov 6</sub>
 - [python-uv-claude-template](https://github.com/jvitorcosta/python-uv-claude-template): Copier template for new Python projects: uv, Ruff, strict mypy, pytest, pre-commit, CI on three OSes and a full Claude Code setup · <sub>Nov 5</sub>
 - [or-solver-streamlit](https://github.com/jvitorcosta/or-solver-streamlit): SolvedOR: solve linear and integer programs written like a textbook, in the browser. Live at solvedor.streamlit.app · <sub>Nov 5</sub>
 - [timeseries-analysis-streamlit](https://github.com/jvitorcosta/timeseries-analysis-streamlit): Streamlit app that shows where a daily forecast goes wrong: by series, weekday, holiday and benchmark · <sub>Nov 5</sub>
