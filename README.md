@@ -16,7 +16,7 @@ More about me on 🌐 **[jvitorcosta.github.io](https://jvitorcosta.github.io)**
 
 ### Lately I've been pushing to
 <!-- RECENT:START -->
-- [jvitorcosta.github.io](https://github.com/jvitorcosta/jvitorcosta.github.io): My corner of the internet: what I'm listening to, watching and reading, and the gadgets I build. Static, rebuilt daily · <sub>Nov 7</sub>
+- [jvitorcosta.github.io](https://github.com/jvitorcosta/jvitorcosta.github.io): My corner of the internet: what I'm listening to, watching and reading, and the gadgets I build. Static, rebuilt daily · <sub>Nov 8</sub>
 - [timeseries-analysis-streamlit](https://github.com/jvitorcosta/timeseries-analysis-streamlit): Streamlit app that shows where a daily forecast goes wrong: by series, weekday, holiday and benchmark · <sub>Nov 7</sub>
 - [car-cyberdeck](https://github.com/jvitorcosta/car-cyberdeck): ESP32 touchscreens and a Garmin watch app for the car: Spotify as a Pokémon battle, plus LED light control · <sub>Nov 7</sub>
 - [open-radars-manaus](https://github.com/jvitorcosta/open-radars-manaus): Open, human-verified data on fixed traffic-enforcement cameras in Manaus, Brazil · <sub>Nov 6</sub>
