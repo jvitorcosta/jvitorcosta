@@ -17,10 +17,10 @@ More about me on 🌐 **[jvitorcosta.github.io](https://jvitorcosta.github.io)**
 ### Lately I've been pushing to
 <!-- RECENT:START -->
 - [jvitorcosta.github.io](https://github.com/jvitorcosta/jvitorcosta.github.io): My corner of the internet: what I'm listening to, watching and reading, and the gadgets I build. Static, rebuilt daily · <sub>Nov 10</sub>
+- [or-solver-streamlit](https://github.com/jvitorcosta/or-solver-streamlit): SolvedOR: solve linear and integer programs written like a textbook, in the browser. Live at solvedor.streamlit.app · <sub>Nov 10</sub>
 - [car-cyberdeck](https://github.com/jvitorcosta/car-cyberdeck): A car cyberdeck: ESP32 touchscreens and a Garmin watch app that control the car's inside and outside LED lights by touch, gamepad, voice or watch, synced to Spotify · <sub>Nov 9</sub>
 - [open-radars-manaus](https://github.com/jvitorcosta/open-radars-manaus): Open, human-verified data on fixed traffic-enforcement cameras in Manaus, Brazil · <sub>Nov 8</sub>
 - [timeseries-analysis-streamlit](https://github.com/jvitorcosta/timeseries-analysis-streamlit): Streamlit app that shows where a daily forecast goes wrong: by series, weekday, holiday and benchmark · <sub>Nov 7</sub>
-- [python-uv-claude-template](https://github.com/jvitorcosta/python-uv-claude-template): Copier template for new Python projects: uv, Ruff, strict mypy, pytest, pre-commit, CI on three OSes and a full Claude Code setup · <sub>Nov 5</sub>
 <!-- RECENT:END -->
 
 📫 [LinkedIn](https://www.linkedin.com/in/jvpro/) · joaovpro17@gmail.com
