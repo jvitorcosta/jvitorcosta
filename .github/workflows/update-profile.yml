@@ -27,7 +27,10 @@ jobs:
         env:
           LETTERBOXD_USER: zubu
 
-      - name: Redraw the header, commit skyline and Pokémon card
+      - name: Refresh the Goodreads and Strava cards
+        run: uv run scripts/life_cards.py
+
+      - name: Redraw the header and commit skyline
         run: uv run scripts/profile_art.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

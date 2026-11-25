@@ -2,7 +2,7 @@
 # requires-python = ">=3.12"
 # dependencies = []
 # ///
-"""Draw the README's generated art into assets/: trainer-sheet header, commit skyline, Pokémon card.
+"""Draw the README's generated art into assets/: trainer-sheet header and commit skyline.
 
 Run with: uv run scripts/profile_art.py
 Env: GH_USER (default jvitorcosta), GITHUB_TOKEN (unused now; kept for the API rate limit if needed).
@@ -61,27 +61,19 @@ THEMES = {
 
 def header(mode: str) -> str:
     t = THEMES[mode]
-    rows = [
-        ("YEARS", "5 in production ML and LLMs"),
-        ("PROOF", "Nubank · fraud ML for a US bank"),
-    ]
     out = [
-        '<svg xmlns="http://www.w3.org/2000/svg" width="640" height="200" viewBox="0 0 640 200">',
+        '<svg xmlns="http://www.w3.org/2000/svg" width="640" height="170" viewBox="0 0 640 170">',
         "<title>Vitor Pinheiro, AI/ML engineer: trainer sheet</title>",
         f"<style>text{{font-family:{SANS}}} .m{{font-family:{MONO}}}</style>",
-        f'<rect x="1.5" y="1.5" width="637" height="197" rx="14" fill="{t["bg"]}" stroke="{t["edge"]}" stroke-width="3"/>',
-        f'<rect x="22" y="26" width="148" height="148" rx="10" fill="{t["chip"]}" stroke="{t["accent"]}" stroke-width="3"/>',
-        f'<image x="30" y="34" width="132" height="132" style="image-rendering:pixelated" href="data:image/png;base64,{AVATAR}"/>',
-        f'<text class="m" x="196" y="40" font-size="14" letter-spacing="3" fill="{t["soft"]}">TRAINER SHEET</text>',
-        f'<text x="196" y="76" font-size="32" font-weight="800" fill="{t["ink"]}">Vitor Pinheiro</text>',
-        f'<text x="196" y="102" font-size="19" font-weight="700" fill="{t["accent"]}">AI/ML Engineer · Dark type</text>',
+        f'<rect x="1.5" y="1.5" width="637" height="167" rx="14" fill="{t["bg"]}" stroke="{t["edge"]}" stroke-width="3"/>',
+        f'<rect x="22" y="20" width="130" height="130" rx="10" fill="{t["chip"]}" stroke="{t["accent"]}" stroke-width="3"/>',
+        f'<image x="28" y="26" width="118" height="118" style="image-rendering:pixelated" href="data:image/png;base64,{AVATAR}"/>',
+        f'<text class="m" x="178" y="40" font-size="14" letter-spacing="3" fill="{t["soft"]}">TRAINER SHEET</text>',
+        f'<text x="178" y="78" font-size="32" font-weight="800" fill="{t["ink"]}">Vitor Pinheiro</text>',
+        f'<text x="178" y="104" font-size="19" font-weight="700" fill="{t["accent"]}">AI/ML Engineer · Dark type</text>',
     ]
-    for i, (k, v) in enumerate(rows):
-        y = 132 + i * 26
-        out.append(f'<text class="m" x="196" y="{y}" font-size="14" font-weight="700" fill="{t["soft"]}">{k}</text>')
-        out.append(f'<text x="282" y="{y}" font-size="16" fill="{t["ink"]}">{esc(v)}</text>')
-    out.append(f'<circle cx="203" cy="178" r="5" fill="{t["ok"]}"/>')
-    out.append(f'<text x="216" y="184" font-size="16" font-weight="700" fill="{t["ok"]}">Open to remote roles</text>')
+    out.append(f'<circle cx="185" cy="132" r="5" fill="{t["ok"]}"/>')
+    out.append(f'<text x="198" y="138" font-size="16" font-weight="700" fill="{t["ok"]}">Open to remote roles</text>')
     out.append("</svg>")
     return "\n".join(out)
 
@@ -171,48 +163,6 @@ def skyline(mode: str, weeks: list[list[int]]) -> str:
     return "\n".join(out)
 
 
-# ---------- Pokémon card -----------------------------------------------------------------------
-
-
-def pokemon() -> str:
-    W, H = 540, 135
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">
-  <title>Pokémon-style card: Vitor, basic Dark type, AI/ML engineer</title>
-  <style>
-    text {{ font-family: {SANS}; }}
-    .m {{ font-family: {MONO}; }}
-    .sheen {{ animation: sweep 6s ease-in-out infinite; }}
-    @keyframes sweep {{ 0%, 100% {{ transform: translateX(-340px) skewX(-18deg); }} 50% {{ transform: translateX(340px) skewX(-18deg); }} }}
-  </style>
-  <defs>
-    <linearGradient id="base" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#241b2e"/><stop offset="0.55" stop-color="#15121c"/><stop offset="1" stop-color="#1c1410"/>
-    </linearGradient>
-    <linearGradient id="holo" x1="0" y1="0" x2="1" y2="0.4">
-      <stop offset="0" stop-color="#ff5f6d"/><stop offset="0.2" stop-color="{ORANGE}"/><stop offset="0.4" stop-color="#ffe66b"/>
-      <stop offset="0.6" stop-color="#4ef0a8"/><stop offset="0.8" stop-color="{BLUE}"/><stop offset="1" stop-color="#b48cff"/>
-    </linearGradient>
-    <linearGradient id="beam" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#fff" stop-opacity="0.22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
-    <radialGradient id="art" cx="50%" cy="55%" r="65%"><stop offset="0" stop-color="#2d6f9a"/><stop offset="1" stop-color="#0f1722"/></radialGradient>
-    <clipPath id="card"><rect x="3" y="3" width="{W - 6}" height="{H - 6}" rx="10"/></clipPath>
-  </defs>
-  <rect x="1.5" y="1.5" width="{W - 3}" height="{H - 3}" rx="12" fill="{GOLD}"/>
-  <g clip-path="url(#card)">
-    <rect width="{W}" height="{H}" fill="url(#base)"/>
-    <rect width="{W}" height="{H}" fill="url(#holo)" opacity="0.16"/>
-    <rect class="sheen" x="200" y="-10" width="120" height="{H + 20}" fill="url(#beam)"/>
-  </g>
-  <rect x="12" y="12" width="112" height="111" rx="6" fill="url(#art)" stroke="{GOLD}" stroke-width="2"/>
-  <image x="18" y="17" width="100" height="100" style="image-rendering:pixelated" href="data:image/png;base64,{AVATAR}"/>
-  <text class="m" x="138" y="26" font-size="11" letter-spacing="1.5" fill="#a89a82">BASIC · DARK TYPE</text>
-  <text x="138" y="52" font-size="26" font-weight="800" fill="#f5e6c8">Vitor</text>
-  <text x="{W - 16}" y="52" font-size="16" font-weight="800" fill="#ff6b6b" text-anchor="end">HP 5</text>
-  <text x="138" y="88" font-size="15" font-weight="700" fill="{ORANGE}">Ship It</text>
-  <text x="138" y="108" font-size="12" fill="#c9bba0">ML and LLM systems in production</text>
-</svg>"""
-
-
 def main() -> None:
     write("header-dark.svg", header("dark"))
     write("header-light.svg", header("light"))
@@ -222,10 +172,6 @@ def main() -> None:
         write("skyline-light.svg", skyline("light", weeks))
     except Exception as e:  # noqa: BLE001 - keep the old art on any failure
         print("skyline kept:", e)
-    try:
-        write("pokemon-card.svg", pokemon())
-    except Exception as e:  # noqa: BLE001
-        print("card kept:", e)
 
 
 if __name__ == "__main__":
