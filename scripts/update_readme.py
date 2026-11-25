@@ -4,7 +4,7 @@
 # ///
 """Refresh the two generated blocks of README.md from the GitHub API and the Letterboxd card.
 
-- NOW: "building <the repo I pushed to last> · watching <last film from assets/letterboxd.svg>".
+- NOW: "building <the project I pushed to last> · watching <last film from assets/letterboxd.svg>".
 - PROJECTS: my curated projects, each with the date of its last push.
 
 Run with: uv run scripts/update_readme.py   (after scripts/letterboxd_card.py)
@@ -23,7 +23,8 @@ USER = os.environ.get("GH_USER", "jvitorcosta")
 ROOT = Path(__file__).resolve().parent.parent
 README = ROOT / "README.md"
 LETTERBOXD = ROOT / "assets" / "letterboxd.svg"
-HIDDEN = {"fraud-alert-explainer", USER}
+# Not "building" material: the profile repo, my site (it has its own link) and my CV.
+HIDDEN = {"fraud-alert-explainer", USER, f"{USER}.github.io", "curriculum-vitae"}
 
 # name, what it is (first person), stack, optional live link
 PROJECTS = [
@@ -73,7 +74,6 @@ def now_block(repos: list[dict]) -> str:
     parts = []
     if building:
         parts.append(f"🔨 building [{building['name']}]({building['html_url']})")
-    parts.append("🎧 listening: live card below")
     if film := watching():
         parts.append(f"🎬 watching {film}")
     return "**Now** · " + " · ".join(parts)

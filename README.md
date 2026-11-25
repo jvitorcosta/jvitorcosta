@@ -9,12 +9,10 @@
 **🌐 [Portfolio](https://jvitorcosta.github.io)** · **💼 [LinkedIn](https://www.linkedin.com/in/jvpro/)** · **📄 [Resume (PDF)](https://jvitorcosta.github.io/Vitor_Pinheiro_Resume.pdf)** · ✉️ joaovpro17@gmail.com
 
 <!-- NOW:START -->
-**Now** · 🔨 building [jvitorcosta.github.io](https://github.com/jvitorcosta/jvitorcosta.github.io) · 🎧 listening: live card below · 🎬 watching I Play Rocky
+**Now** · 🔨 building [garmin-watchfaces](https://github.com/jvitorcosta/garmin-watchfaces) · 🎬 watching I Play Rocky
 <!-- NOW:END -->
 
 </div>
-
-I'm an AI/ML engineer. For five years I've shipped machine learning and LLM systems to production in fintech: fraud models at Nubank and for a US bank. Open to remote roles.
 
 ## Projects
 
