@@ -25,12 +25,12 @@ OUT = Path(__file__).resolve().parent.parent / "assets" / "letterboxd.svg"
 NS = {"letterboxd": "https://letterboxd.com"}
 UA = "Mozilla/5.0 (profile card; +https://github.com/jvitorcosta/jvitorcosta)"
 
-# Same frame as the Spotify card next to it (novatorem, dark theme).
+# Same frame and purple background as the Spotify card next to it (novatorem, background_color=150d24).
 W, H = 540, 135
 PAD = 7
 POSTER_H = H - 2 * PAD
 POSTER_W = round(POSTER_H * 2 / 3)
-BG = "#181414"
+BG = "#150d24"
 ORANGE, GREEN, BLUE = "#ff8000", "#00e054", "#40bcf4"
 
 

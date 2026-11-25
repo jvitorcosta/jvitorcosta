@@ -24,9 +24,9 @@ GOODREADS = "https://www.goodreads.com"
 PROFILE = f"{GOODREADS}/user/show/185113793-vitor-pinheiro"
 SITE = "https://jvitorcosta.github.io/"
 W, H, PAD = 540, 135, 7
-BG = "#181414"
+BG = "#150d24"
 SANS = '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif'
-TAN, CREAM, STRAVA = "#c9a96e", "#f4f1ea", "#fc4c02"
+TAN, CREAM, STRAVA = "#b79cf0", "#f1e9ff", "#fc4c02"
 
 # The 20x20 pixel Strava tile from my site, drawn as rects.
 STRAVA_TILE = (
@@ -111,13 +111,13 @@ def goodreads_card(b: dict) -> str:
             f'preserveAspectRatio="xMidYMid slice" href="data:image/jpeg;base64,{img}"/>'
         )
     except Exception:  # noqa: BLE001 - the card is fine without a cover
-        poster = f'<rect x="{PAD}" y="{PAD}" width="{pw}" height="{ph}" rx="4" fill="#382110"/>'
+        poster = f'<rect x="{PAD}" y="{PAD}" width="{pw}" height="{ph}" rx="4" fill="#3b2466"/>'
     bar = ""
     if b["page"] and b["pages"]:
         frac = min(b["page"] / b["pages"], 1)
         bw = W - x - 20
         bar = (
-            f'<rect x="{x}" y="100" width="{bw}" height="8" rx="4" fill="#2a2420"/>'
+            f'<rect x="{x}" y="100" width="{bw}" height="8" rx="4" fill="#2c1b4d"/>'
             f'<rect x="{x}" y="100" width="{bw * frac:.0f}" height="8" rx="4" fill="{TAN}"/>'
             f'<text x="{x}" y="125" class="meta">page {b["page"]} of {b["pages"]} · {round(frac * 100)}%</text>'
         )

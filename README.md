@@ -3,7 +3,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="assets/header-light.svg">
-  <img src="assets/header-light.svg" width="560" alt="Trainer sheet. Vitor Pinheiro, AI/ML engineer, Dark type. Open to remote roles.">
+  <img src="assets/header-light.svg" width="480" alt="Trainer sheet. Vitor Pinheiro, AI/ML engineer, Dark type.">
 </picture>
 
 **🌐 [Portfolio](https://jvitorcosta.github.io)** · **💼 [LinkedIn](https://www.linkedin.com/in/jvpro/)** · **📄 [Resume (PDF)](https://jvitorcosta.github.io/Vitor_Pinheiro_Resume.pdf)** · ✉️ joaovpro17@gmail.com
@@ -32,7 +32,7 @@
 ## Off the clock
 
 <p align="center">
-  <a href="https://spotify-now-playing-ashen-two.vercel.app/redirect"><img src="https://spotify-now-playing-ashen-two.vercel.app/api/orchestrator" width="410" alt="What I am listening to on Spotify right now"></a>&nbsp;
+  <a href="https://spotify-now-playing-ashen-two.vercel.app/redirect"><img src="https://spotify-now-playing-ashen-two.vercel.app/api/orchestrator?background_color=150d24" width="410" alt="What I am listening to on Spotify right now"></a>&nbsp;
   <a href="https://letterboxd.com/zubu/"><img src="assets/letterboxd.svg" width="410" alt="The last film I watched, from Letterboxd"></a>
   <br><br>
   <a href="https://www.goodreads.com/user/show/185113793-vitor-pinheiro"><img src="assets/goodreads.svg" width="410" alt="The book I am reading, from Goodreads"></a>&nbsp;

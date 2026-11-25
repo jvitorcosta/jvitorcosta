@@ -28,8 +28,8 @@ UA = "Mozilla/5.0 (profile art; +https://github.com/jvitorcosta/jvitorcosta)"
 SANS = '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif'
 MONO = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
 
-# Palette: the site's warm cream and ink, the orange of the old snake, the blue of the avatar's flames.
-ORANGE, BLUE, GOLD, GREEN = "#f0802c", "#40bcf4", "#e8b04a", "#00e054"
+# Palette: purple, from the site's Nu purple (#820ad1), with violet and cyan neon.
+ORANGE, BLUE, GOLD, GREEN = "#d28bff", "#40bcf4", "#e8b04a", "#00e054"  # ORANGE is now the violet neon
 
 
 def get(url: str) -> bytes:
@@ -52,8 +52,8 @@ def write(name: str, svg: str) -> None:
 # ---------- header ----------------------------------------------------------------------------
 
 THEMES = {
-    "dark": dict(bg="#14110f", edge="#3a2a1c", ink="#f5e6c8", soft="#a89a82", accent=ORANGE, chip="#201a16", ok=GREEN),
-    "light": dict(bg="#f5e6c8", edge="#8a5a12", ink="#3a1410", soft="#6b4a3a", accent="#a3161a", chip="#ead2a8", ok="#0a7a35"),
+    "dark": dict(bg="#150d24", edge="#3b2466", ink="#efe6ff", soft="#a99bc9", accent="#b57cff", chip="#20123a", ok=GREEN),
+    "light": dict(bg="#f1e8ff", edge="#820ad1", ink="#2a0845", soft="#6b4a8f", accent="#820ad1", chip="#e2d2fa", ok="#0a7a35"),
 }
 
 
@@ -63,29 +63,27 @@ def portrait(mode: str, ink: str) -> str:
     cols = max(len(line) for line in lines)
     width = 150
     rows = "".join(
-        f'<tspan x="26" y="{28 + i * 5.0:.1f}" textLength="{width * len(line) / cols:.1f}" lengthAdjust="spacing">'
+        f'<tspan x="26" y="{34 + i * 7.0:.1f}" textLength="{width * len(line) / cols:.1f}" lengthAdjust="spacing">'
         f"{esc(line)}</tspan>"
         for i, line in enumerate(lines)
         if line.strip()
     )
-    return f'<text class="m" font-size="5.2" fill="{ink}" xml:space="preserve" aria-hidden="true">{rows}</text>'
+    return f'<text class="m" font-size="6.4" fill="{ink}" xml:space="preserve" aria-hidden="true">{rows}</text>'
 
 
 def header(mode: str) -> str:
     t = THEMES[mode]
     out = [
-        '<svg xmlns="http://www.w3.org/2000/svg" width="640" height="200" viewBox="0 0 640 200">',
+        '<svg xmlns="http://www.w3.org/2000/svg" width="520" height="200" viewBox="0 0 520 200">',
         "<title>Vitor Pinheiro, AI/ML engineer: trainer sheet</title>",
         f"<style>text{{font-family:{SANS}}} .m{{font-family:{MONO}}}</style>",
-        f'<rect x="1.5" y="1.5" width="637" height="197" rx="14" fill="{t["bg"]}" stroke="{t["edge"]}" stroke-width="3"/>',
+        f'<rect x="1.5" y="1.5" width="517" height="197" rx="14" fill="{t["bg"]}" stroke="{t["edge"]}" stroke-width="3"/>',
         f'<rect x="18" y="16" width="168" height="168" rx="10" fill="{t["chip"]}" stroke="{t["accent"]}" stroke-width="3"/>',
         portrait(mode, t["ink"]),
-        f'<text class="m" x="212" y="50" font-size="14" letter-spacing="3" fill="{t["soft"]}">TRAINER SHEET</text>',
-        f'<text x="212" y="92" font-size="32" font-weight="800" fill="{t["ink"]}">Vitor Pinheiro</text>',
-        f'<text x="212" y="120" font-size="19" font-weight="700" fill="{t["accent"]}">AI/ML Engineer · Dark type</text>',
+        f'<text class="m" x="212" y="76" font-size="14" letter-spacing="3" fill="{t["soft"]}">TRAINER SHEET</text>',
+        f'<text x="212" y="116" font-size="32" font-weight="800" fill="{t["ink"]}">Vitor Pinheiro</text>',
+        f'<text x="212" y="144" font-size="19" font-weight="700" fill="{t["accent"]}">AI/ML Engineer · Dark type</text>',
     ]
-    out.append(f'<circle cx="219" cy="152" r="5" fill="{t["ok"]}"/>')
-    out.append(f'<text x="232" y="158" font-size="16" font-weight="700" fill="{t["ok"]}">Open to remote roles</text>')
     out.append("</svg>")
     return "\n".join(out)
 
@@ -114,11 +112,11 @@ def contributions() -> list[list[int]]:
 
 def skyline(mode: str, weeks: list[list[int]]) -> str:
     dark = mode == "dark"
-    bg, ground = ("#0d0b14", "#2a2140") if dark else ("#f5e6c8", "#8a5a12")
-    far = "#17122a" if dark else "#e3cfa6"
-    body = "#120f1c" if dark else "#fff7e6"
-    dim = "#2b2540" if dark else "#d9c39a"
-    txt = "#a89ec8" if dark else "#6b4a3a"
+    bg, ground = ("#150d24", "#3b2466") if dark else ("#f1e8ff", "#820ad1")
+    far = "#1d1233" if dark else "#e0d0f7"
+    body = "#0f0919" if dark else "#fbf7ff"
+    dim = "#33214f" if dark else "#d3c0f0"
+    txt = "#a99bc9" if dark else "#6b4a8f"
     W, H, base = 840, 200, 164
     n = len(weeks)
     slot = (W - 40) / n
