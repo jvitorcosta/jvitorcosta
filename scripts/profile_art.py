@@ -7,12 +7,11 @@
 Run with: uv run scripts/profile_art.py
 Env: GH_USER (default jvitorcosta), GITHUB_TOKEN (unused now; kept for the API rate limit if needed).
 
-Everything is plain SVG with the avatar embedded as base64, because GitHub does not load external
-images inside an SVG. If a data source can't be read, the existing file is kept and the script
+Everything is plain SVG (the portrait is ASCII text, see make_ascii_portrait.py), because GitHub does
+not load external images inside an SVG. If a data source can't be read, the existing file is kept and the script
 still exits 0 (the daily refresh must not fail on a flaky network).
 """
 
-import base64
 import html
 import math
 import os
@@ -26,7 +25,6 @@ USER = os.environ.get("GH_USER", "jvitorcosta")
 ROOT = Path(__file__).resolve().parent.parent
 ASSETS = ROOT / "assets"
 UA = "Mozilla/5.0 (profile art; +https://github.com/jvitorcosta/jvitorcosta)"
-AVATAR = base64.b64encode((ASSETS / "avatar.png").read_bytes()).decode()
 SANS = '-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif'
 MONO = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"
 
@@ -59,21 +57,35 @@ THEMES = {
 }
 
 
+def portrait(mode: str, ink: str) -> str:
+    """The ASCII portrait as one <text> of fixed-width rows (textLength keeps it the same on every font)."""
+    lines = (ASSETS / f"portrait-{mode}.txt").read_text(encoding="utf-8").splitlines()
+    cols = max(len(line) for line in lines)
+    width = 150
+    rows = "".join(
+        f'<tspan x="26" y="{28 + i * 5.0:.1f}" textLength="{width * len(line) / cols:.1f}" lengthAdjust="spacing">'
+        f"{esc(line)}</tspan>"
+        for i, line in enumerate(lines)
+        if line.strip()
+    )
+    return f'<text class="m" font-size="5.2" fill="{ink}" xml:space="preserve" aria-hidden="true">{rows}</text>'
+
+
 def header(mode: str) -> str:
     t = THEMES[mode]
     out = [
-        '<svg xmlns="http://www.w3.org/2000/svg" width="640" height="170" viewBox="0 0 640 170">',
+        '<svg xmlns="http://www.w3.org/2000/svg" width="640" height="200" viewBox="0 0 640 200">',
         "<title>Vitor Pinheiro, AI/ML engineer: trainer sheet</title>",
         f"<style>text{{font-family:{SANS}}} .m{{font-family:{MONO}}}</style>",
-        f'<rect x="1.5" y="1.5" width="637" height="167" rx="14" fill="{t["bg"]}" stroke="{t["edge"]}" stroke-width="3"/>',
-        f'<rect x="22" y="20" width="130" height="130" rx="10" fill="{t["chip"]}" stroke="{t["accent"]}" stroke-width="3"/>',
-        f'<image x="28" y="26" width="118" height="118" style="image-rendering:pixelated" href="data:image/png;base64,{AVATAR}"/>',
-        f'<text class="m" x="178" y="40" font-size="14" letter-spacing="3" fill="{t["soft"]}">TRAINER SHEET</text>',
-        f'<text x="178" y="78" font-size="32" font-weight="800" fill="{t["ink"]}">Vitor Pinheiro</text>',
-        f'<text x="178" y="104" font-size="19" font-weight="700" fill="{t["accent"]}">AI/ML Engineer · Dark type</text>',
+        f'<rect x="1.5" y="1.5" width="637" height="197" rx="14" fill="{t["bg"]}" stroke="{t["edge"]}" stroke-width="3"/>',
+        f'<rect x="18" y="16" width="168" height="168" rx="10" fill="{t["chip"]}" stroke="{t["accent"]}" stroke-width="3"/>',
+        portrait(mode, t["ink"]),
+        f'<text class="m" x="212" y="50" font-size="14" letter-spacing="3" fill="{t["soft"]}">TRAINER SHEET</text>',
+        f'<text x="212" y="92" font-size="32" font-weight="800" fill="{t["ink"]}">Vitor Pinheiro</text>',
+        f'<text x="212" y="120" font-size="19" font-weight="700" fill="{t["accent"]}">AI/ML Engineer · Dark type</text>',
     ]
-    out.append(f'<circle cx="185" cy="132" r="5" fill="{t["ok"]}"/>')
-    out.append(f'<text x="198" y="138" font-size="16" font-weight="700" fill="{t["ok"]}">Open to remote roles</text>')
+    out.append(f'<circle cx="219" cy="152" r="5" fill="{t["ok"]}"/>')
+    out.append(f'<text x="232" y="158" font-size="16" font-weight="700" fill="{t["ok"]}">Open to remote roles</text>')
     out.append("</svg>")
     return "\n".join(out)
 
