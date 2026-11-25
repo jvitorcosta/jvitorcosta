@@ -3,7 +3,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="assets/header-light.svg">
-  <img src="assets/header-light.svg" width="560" alt="Trainer sheet. Vitor Pinheiro, AI/ML engineer, Dark type. Five years of production ML and LLM systems. Domains: fintech, fraud, LLM systems. Proof: Nubank and fraud ML for a US bank. Open to remote roles.">
+  <img src="assets/header-light.svg" width="560" alt="Trainer sheet. Vitor Pinheiro, AI/ML engineer, Dark type. Open to remote roles.">
 </picture>
 
 **🌐 [Portfolio](https://jvitorcosta.github.io)** · **💼 [LinkedIn](https://www.linkedin.com/in/jvpro/)** · **📄 [Resume (PDF)](https://jvitorcosta.github.io/Vitor_Pinheiro_Resume.pdf)** · ✉️ joaovpro17@gmail.com
@@ -15,12 +15,6 @@
 </div>
 
 I'm an AI/ML engineer. For five years I've shipped machine learning and LLM systems to production in fintech: fraud models at Nubank and for a US bank. Open to remote roles.
-
-<p align="center">
-  <img src="assets/pokemon-card.svg" width="276" alt="Pokémon-style holo card: Vitor, basic Dark type, HP 5. Moves: Ship It, ML and LLM systems in production for five years, and Catch Fraud.">
-  <a href="https://spotify-now-playing-ashen-two.vercel.app/redirect"><img src="https://spotify-now-playing-ashen-two.vercel.app/api/orchestrator" width="276" alt="What I am listening to on Spotify right now"></a>
-  <a href="https://letterboxd.com/zubu/"><img src="assets/letterboxd.svg" width="276" alt="The last film I watched, from Letterboxd"></a>
-</p>
 
 ## Projects
 
@@ -41,4 +35,14 @@ I'm an AI/ML engineer. For five years I've shipped machine learning and LLM syst
   <img src="assets/skyline-light.svg" alt="Skyline of my last twelve months of GitHub contributions: one building per week, taller means more contributions, a lit window for each active day.">
 </picture>
 
-<sub>Cards and skyline drawn by [scripts/profile_art.py](scripts/profile_art.py) from my own GitHub data, the skyline inspired by gitskins Contribution City and Neon Skyline · now playing by [novatorem](https://github.com/novatorem/novatorem) · everything refreshed daily by GitHub Actions</sub>
+## Off the clock
+
+<p align="center">
+  <a href="https://spotify-now-playing-ashen-two.vercel.app/redirect"><img src="https://spotify-now-playing-ashen-two.vercel.app/api/orchestrator" width="410" alt="What I am listening to on Spotify right now"></a>&nbsp;
+  <a href="https://letterboxd.com/zubu/"><img src="assets/letterboxd.svg" width="410" alt="The last film I watched, from Letterboxd"></a>
+  <br><br>
+  <a href="https://www.goodreads.com/user/show/185113793-vitor-pinheiro"><img src="assets/goodreads.svg" width="410" alt="The book I am reading, from Goodreads"></a>&nbsp;
+  <a href="https://www.strava.com/athletes/150977885"><img src="assets/strava.svg" width="410" alt="My latest activity, from Strava"></a>
+</p>
+
+<sub>Header, skyline and cards drawn by [scripts/profile_art.py](scripts/profile_art.py) and [scripts/life_cards.py](scripts/life_cards.py) from my own GitHub data, the skyline inspired by gitskins Contribution City and Neon Skyline · now playing by [novatorem](https://github.com/novatorem/novatorem) · everything refreshed daily by GitHub Actions</sub>
