@@ -2,16 +2,12 @@
 # requires-python = ">=3.12"
 # dependencies = []
 # ///
-"""Refresh the two generated blocks of README.md from the GitHub API and the Letterboxd card.
+"""Refresh the generated PROJECTS block of README.md: my curated projects, each with the date of its last push.
 
-- NOW: "building <the project I pushed to last> · watching <last film from assets/letterboxd.svg>".
-- PROJECTS: my curated projects, each with the date of its last push.
-
-Run with: uv run scripts/update_readme.py   (after scripts/letterboxd_card.py)
+Run with: uv run scripts/update_readme.py   
 Env: GITHUB_TOKEN (optional locally, set in Actions), GH_USER (default: jvitorcosta).
 """
 
-import html
 import json
 import os
 import re
@@ -22,9 +18,6 @@ from pathlib import Path
 USER = os.environ.get("GH_USER", "jvitorcosta")
 ROOT = Path(__file__).resolve().parent.parent
 README = ROOT / "README.md"
-LETTERBOXD = ROOT / "assets" / "letterboxd.svg"
-# Not "building" material: the profile repo, my site (it has its own link) and my CV.
-HIDDEN = {"fraud-alert-explainer", USER, f"{USER}.github.io", "curriculum-vitae"}
 
 # name, what it is (first person), stack, optional live link
 PROJECTS = [
@@ -62,23 +55,6 @@ def projects_block(by_name: dict[str, dict], now: datetime) -> str:
     return "\n".join(lines)
 
 
-def watching() -> str | None:
-    if not LETTERBOXD.exists():
-        return None
-    m = re.search(r"<title>Last watched on Letterboxd: (.+?)</title>", LETTERBOXD.read_text(encoding="utf-8"))
-    return html.unescape(m.group(1)) if m else None
-
-
-def now_block(repos: list[dict]) -> str:
-    building = next((r for r in repos if not r["fork"] and not r["archived"] and r["name"] not in HIDDEN), None)
-    parts = []
-    if building:
-        parts.append(f"🔨 building [{building['name']}]({building['html_url']})")
-    if film := watching():
-        parts.append(f"🎬 watching {film}")
-    return "**Now** · " + " · ".join(parts)
-
-
 def swap(text: str, tag: str, body: str) -> str:
     start, end = f"<!-- {tag}:START -->", f"<!-- {tag}:END -->"
     block = f"{start}\n{body}\n{end}"
@@ -89,8 +65,7 @@ def main() -> None:
     now = datetime.now(UTC)
     repos = fetch_repos()
     text = README.read_text(encoding="utf-8")
-    new = swap(text, "NOW", now_block(repos))
-    new = swap(new, "PROJECTS", projects_block({r["name"]: r for r in repos}, now))
+    new = swap(text, "PROJECTS", projects_block({r["name"]: r for r in repos}, now))
     if new != text:
         README.write_text(new, encoding="utf-8")
         print("README updated")
