@@ -5,7 +5,7 @@
 """Draw the README's generated art into assets/: trainer-sheet header, commit skyline, Pokémon card.
 
 Run with: uv run scripts/profile_art.py
-Env: GH_USER (default jvitorcosta), GITHUB_TOKEN (optional, only raises the API rate limit).
+Env: GH_USER (default jvitorcosta), GITHUB_TOKEN (unused now; kept for the API rate limit if needed).
 
 Everything is plain SVG with the avatar embedded as base64, because GitHub does not load external
 images inside an SVG. If a data source can't be read, the existing file is kept and the script
@@ -14,7 +14,6 @@ still exits 0 (the daily refresh must not fail on a flaky network).
 
 import base64
 import html
-import json
 import math
 import os
 import re
@@ -64,16 +63,15 @@ def header(mode: str) -> str:
     t = THEMES[mode]
     rows = [
         ("YEARS", "5 in production ML and LLMs"),
-        ("DOMAINS", "fintech · fraud · LLM systems"),
         ("PROOF", "Nubank · fraud ML for a US bank"),
     ]
     out = [
-        '<svg xmlns="http://www.w3.org/2000/svg" width="640" height="224" viewBox="0 0 640 224">',
+        '<svg xmlns="http://www.w3.org/2000/svg" width="640" height="200" viewBox="0 0 640 200">',
         "<title>Vitor Pinheiro, AI/ML engineer: trainer sheet</title>",
         f"<style>text{{font-family:{SANS}}} .m{{font-family:{MONO}}}</style>",
-        f'<rect x="1.5" y="1.5" width="637" height="221" rx="14" fill="{t["bg"]}" stroke="{t["edge"]}" stroke-width="3"/>',
-        f'<rect x="22" y="38" width="148" height="148" rx="10" fill="{t["chip"]}" stroke="{t["accent"]}" stroke-width="3"/>',
-        f'<image x="30" y="46" width="132" height="132" style="image-rendering:pixelated" href="data:image/png;base64,{AVATAR}"/>',
+        f'<rect x="1.5" y="1.5" width="637" height="197" rx="14" fill="{t["bg"]}" stroke="{t["edge"]}" stroke-width="3"/>',
+        f'<rect x="22" y="26" width="148" height="148" rx="10" fill="{t["chip"]}" stroke="{t["accent"]}" stroke-width="3"/>',
+        f'<image x="30" y="34" width="132" height="132" style="image-rendering:pixelated" href="data:image/png;base64,{AVATAR}"/>',
         f'<text class="m" x="196" y="40" font-size="14" letter-spacing="3" fill="{t["soft"]}">TRAINER SHEET</text>',
         f'<text x="196" y="76" font-size="32" font-weight="800" fill="{t["ink"]}">Vitor Pinheiro</text>',
         f'<text x="196" y="102" font-size="19" font-weight="700" fill="{t["accent"]}">AI/ML Engineer · Dark type</text>',
@@ -82,8 +80,8 @@ def header(mode: str) -> str:
         y = 132 + i * 26
         out.append(f'<text class="m" x="196" y="{y}" font-size="14" font-weight="700" fill="{t["soft"]}">{k}</text>')
         out.append(f'<text x="282" y="{y}" font-size="16" fill="{t["ink"]}">{esc(v)}</text>')
-    out.append(f'<circle cx="203" cy="204" r="5" fill="{t["ok"]}"/>')
-    out.append(f'<text x="216" y="210" font-size="16" font-weight="700" fill="{t["ok"]}">Open to remote roles</text>')
+    out.append(f'<circle cx="203" cy="178" r="5" fill="{t["ok"]}"/>')
+    out.append(f'<text x="216" y="184" font-size="16" font-weight="700" fill="{t["ok"]}">Open to remote roles</text>')
     out.append("</svg>")
     return "\n".join(out)
 
@@ -176,16 +174,7 @@ def skyline(mode: str, weeks: list[list[int]]) -> str:
 # ---------- Pokémon card -----------------------------------------------------------------------
 
 
-def stats() -> dict:
-    user = json.loads(get(f"https://api.github.com/users/{USER}"))
-    repos = json.loads(get(f"https://api.github.com/users/{USER}/repos?type=owner&per_page=100"))
-    return {
-        "repos": user["public_repos"],
-        "stars": sum(r["stargazers_count"] for r in repos if not r["fork"]),
-    }
-
-
-def pokemon(s: dict) -> str:
+def pokemon() -> str:
     W, H = 540, 135
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">
   <title>Pokémon-style card: Vitor, basic Dark type, AI/ML engineer</title>
@@ -219,10 +208,8 @@ def pokemon(s: dict) -> str:
   <text class="m" x="138" y="26" font-size="11" letter-spacing="1.5" fill="#a89a82">BASIC · DARK TYPE</text>
   <text x="138" y="52" font-size="26" font-weight="800" fill="#f5e6c8">Vitor</text>
   <text x="{W - 16}" y="52" font-size="16" font-weight="800" fill="#ff6b6b" text-anchor="end">HP 5</text>
-  <text x="138" y="76" font-size="14" font-weight="700" fill="{ORANGE}">Ship It</text>
-  <text x="138" y="92" font-size="12" fill="#c9bba0">ML and LLM systems, in production, five years</text>
-  <text x="138" y="110" font-size="14" font-weight="700" fill="{BLUE}">Catch Fraud</text>
-  <text x="138" y="126" font-size="11" fill="#a89a82">repos {s["repos"]} · stars {s["stars"]}</text>
+  <text x="138" y="88" font-size="15" font-weight="700" fill="{ORANGE}">Ship It</text>
+  <text x="138" y="108" font-size="12" fill="#c9bba0">ML and LLM systems in production</text>
 </svg>"""
 
 
@@ -236,7 +223,7 @@ def main() -> None:
     except Exception as e:  # noqa: BLE001 - keep the old art on any failure
         print("skyline kept:", e)
     try:
-        write("pokemon-card.svg", pokemon(stats()))
+        write("pokemon-card.svg", pokemon())
     except Exception as e:  # noqa: BLE001
         print("card kept:", e)
 

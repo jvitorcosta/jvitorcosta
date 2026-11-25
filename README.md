@@ -3,7 +3,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="assets/header-light.svg">
-  <img src="assets/header-light.svg" width="560" alt="Trainer sheet. Vitor Pinheiro, AI/ML engineer, Dark type. Five years of production ML and LLM systems. Domains: fintech, fraud, LLM systems. Proof: Nubank and fraud ML for a US bank. Open to remote roles.">
+  <img src="assets/header-light.svg" width="560" alt="Trainer sheet. Vitor Pinheiro, AI/ML engineer, Dark type. Five years of production ML and LLM systems. Proof: Nubank and fraud ML for a US bank. Open to remote roles.">
 </picture>
 
 **🌐 [Portfolio](https://jvitorcosta.github.io)** · **💼 [LinkedIn](https://www.linkedin.com/in/jvpro/)** · **📄 [Resume (PDF)](https://jvitorcosta.github.io/Vitor_Pinheiro_Resume.pdf)** · ✉️ joaovpro17@gmail.com
@@ -17,7 +17,7 @@
 I'm an AI/ML engineer. For five years I've shipped machine learning and LLM systems to production in fintech: fraud models at Nubank and for a US bank. Open to remote roles.
 
 <p align="center">
-  <img src="assets/pokemon-card.svg" width="276" alt="Pokémon-style holo card: Vitor, basic Dark type, HP 5. Moves: Ship It, ML and LLM systems in production for five years, and Catch Fraud.">
+  <img src="assets/pokemon-card.svg" width="276" alt="Pokémon-style holo card: Vitor, basic Dark type, HP 5. Move: Ship It, ML and LLM systems in production.">
   <a href="https://spotify-now-playing-ashen-two.vercel.app/redirect"><img src="https://spotify-now-playing-ashen-two.vercel.app/api/orchestrator" width="276" alt="What I am listening to on Spotify right now"></a>
   <a href="https://letterboxd.com/zubu/"><img src="assets/letterboxd.svg" width="276" alt="The last film I watched, from Letterboxd"></a>
 </p>
