@@ -13,6 +13,7 @@ still exits 0 (the daily refresh must not fail on a flaky network).
 """
 
 import html
+import json
 import math
 import os
 import re
@@ -58,17 +59,17 @@ THEMES = {
 
 
 def portrait(mode: str, ink: str) -> str:
-    """The ASCII portrait as one <text> of fixed-width rows (textLength keeps it the same on every font)."""
-    lines = (ASSETS / f"portrait-{mode}.txt").read_text(encoding="utf-8").splitlines()
-    cols = max(len(line) for line in lines)
-    width = 150
-    rows = "".join(
-        f'<tspan x="26" y="{34 + i * 7.0:.1f}" textLength="{width * len(line) / cols:.1f}" lengthAdjust="spacing">'
-        f"{esc(line)}</tspan>"
-        for i, line in enumerate(lines)
-        if line.strip()
-    )
-    return f'<text class="m" font-size="6.4" fill="{ink}" xml:space="preserve" aria-hidden="true">{rows}</text>'
+    """The coloured ASCII portrait: one <tspan> per row (textLength keeps the width the same on every font),
+    with nested tspans for runs of one colour."""
+    rows = json.loads((ASSETS / f"portrait-{mode}.json").read_text(encoding="utf-8"))
+    cols = max(sum(len(t) for t, _ in runs) for runs in rows)
+    width, step = 146, 6.0
+    out = []
+    for i, runs in enumerate(rows):
+        line = "".join(f'<tspan fill="{c}">{esc(t)}</tspan>' for t, c in runs)
+        n = sum(len(t) for t, _ in runs)
+        out.append(f'<tspan x="27" y="{28 + i * step:.1f}" textLength="{width * n / cols:.1f}" lengthAdjust="spacing">{line}</tspan>')
+    return f'<text class="m" font-size="6.0" fill="{ink}" xml:space="preserve" aria-hidden="true">{"".join(out)}</text>'
 
 
 def header(mode: str) -> str:
