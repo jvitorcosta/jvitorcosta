@@ -14,7 +14,7 @@ from pathlib import Path
 
 from PIL import Image
 
-COLS = 56
+COLS = 42
 RAMP = " .:-=+*#%@"
 OUT = Path(__file__).resolve().parent.parent / "assets"
 
