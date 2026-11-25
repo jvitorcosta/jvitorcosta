@@ -19,6 +19,7 @@ import math
 import os
 import re
 import urllib.request
+from urllib.parse import urlparse
 from datetime import date
 from pathlib import Path
 
@@ -36,7 +37,7 @@ ORANGE, BLUE, GOLD, GREEN = "#f0802c", "#40bcf4", "#e8b04a", "#00e054"
 
 def get(url: str) -> bytes:
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "*/*"})
-    if (token := os.environ.get("GITHUB_TOKEN")) and "api.github.com" in url:
+    if (token := os.environ.get("GITHUB_TOKEN")) and urlparse(url).hostname == "api.github.com":
         req.add_header("Authorization", f"Bearer {token}")
     with urllib.request.urlopen(req, timeout=30) as resp:  # noqa: S310 - fixed https URLs
         return resp.read()
