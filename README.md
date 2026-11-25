@@ -9,7 +9,7 @@
 **🌐 [Portfolio](https://jvitorcosta.github.io)** · **💼 [LinkedIn](https://www.linkedin.com/in/jvpro/)** · **📄 [Resume (PDF)](https://jvitorcosta.github.io/Vitor_Pinheiro_Resume.pdf)** · ✉️ joaovpro17@gmail.com
 
 <!-- NOW:START -->
-**Now** · 🔨 building [garmin-watchfaces](https://github.com/jvitorcosta/garmin-watchfaces) · 🎬 watching I Play Rocky
+**Now** · 🔨 building [car-cyberdeck](https://github.com/jvitorcosta/car-cyberdeck) · 🎬 watching I Play Rocky
 <!-- NOW:END -->
 
 </div>
