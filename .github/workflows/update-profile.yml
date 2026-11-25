@@ -15,46 +15,34 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  recent-repos:
+  profile:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
 
-      - name: Refresh "Lately I've been pushing to"
-        run: uv run scripts/update_readme.py
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_USER: ${{ github.repository_owner }}
-
       - name: Refresh the Letterboxd card
         run: uv run scripts/letterboxd_card.py
         env:
           LETTERBOXD_USER: zubu
 
+      - name: Redraw the header, commit skyline and Pokémon card
+        run: uv run scripts/profile_art.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_USER: ${{ github.repository_owner }}
+
+      - name: Refresh the now-line and the projects list
+        run: uv run scripts/update_readme.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_USER: ${{ github.repository_owner }}
+
       - uses: stefanzweifel/git-auto-commit-action@d0b01107b5db882071f96de5dd4b54961ea93f4c # v7.2.1
         with:
-          commit_message: "chore: refresh recent repos and Letterboxd card"
-          file_pattern: README.md assets/letterboxd.svg
+          commit_message: "chore: refresh profile art, now-line and projects"
+          file_pattern: README.md assets/*.svg
           commit_user_name: github-actions[bot]
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
           commit_author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-
-  snake:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: Platane/snk@d8f6715049803e982ee5ff501b6b9b7d5deeb09b # v3.5.0
-        with:
-          github_user_name: ${{ github.repository_owner }}
-          outputs: |
-            dist/github-snake.svg?color_snake=#f0802c
-            dist/github-snake-dark.svg?palette=github-dark&color_snake=#f0802c
-
-      - uses: crazy-max/ghaction-github-pages@1d6ee9b181a81033a16bd707a1401afa978daab4 # v5.0.0
-        with:
-          target_branch: output
-          build_dir: dist
-          keep_history: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
