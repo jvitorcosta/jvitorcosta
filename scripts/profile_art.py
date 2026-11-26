@@ -73,39 +73,39 @@ def portrait(mode: str, ink: str) -> str:
 
 
 def header(mode: str) -> str:
-    """840x300, drawn large so the name still reads when a phone scales it to about 40%."""
+    """840x220, drawn large so the name still reads when a phone scales it to about 40%."""
     t = THEMES[mode]
     out = [
-        '<svg xmlns="http://www.w3.org/2000/svg" width="840" height="300" viewBox="0 0 840 300">',
+        '<svg xmlns="http://www.w3.org/2000/svg" width="840" height="220" viewBox="0 0 840 220">',
         "<title>Vitor Pinheiro, AI/ML Software Engineer</title>",
         f"<style>text{{font-family:{SANS}}} .m{{font-family:{MONO}}}</style>",
-        f'<rect x="2" y="2" width="836" height="296" rx="20" fill="{t["bg"]}" stroke="{t["edge"]}" stroke-width="4"/>',
-        # The portrait is laid out in a 168x168 box at (18, 16); scale that box up to 260x260 at (20, 20).
-        f'<g transform="translate(20 20) scale({260 / 168:.4f}) translate(-18 -16)">',
+        f'<rect x="2" y="2" width="836" height="216" rx="20" fill="{t["bg"]}" stroke="{t["edge"]}" stroke-width="4"/>',
+        # The portrait is laid out in a 168x168 box at (18, 16); scale that box to 180x180 at (20, 20).
+        f'<g transform="translate(20 20) scale({180 / 168:.4f}) translate(-18 -16)">',
         f'<rect x="18" y="16" width="168" height="168" rx="10" fill="{t["chip"]}" stroke="{t["accent"]}" stroke-width="2.5"/>',
         portrait(mode, t["ink"]),
         "</g>",
-        f'<text x="316" y="148" font-size="60" font-weight="800" fill="{t["ink"]}">Vitor Pinheiro</text>',
-        f'<text x="316" y="200" font-size="34" font-weight="700" fill="{t["accent"]}">AI/ML Software Engineer</text>',
+        f'<text x="236" y="108" font-size="60" font-weight="800" fill="{t["ink"]}">Vitor Pinheiro</text>',
+        f'<text x="236" y="160" font-size="34" font-weight="700" fill="{t["accent"]}">AI/ML Software Engineer</text>',
         "</svg>",
     ]
     return "\n".join(out)
 
 
 def header_phone(mode: str) -> str:
-    """600x580, portrait above the name, so the header is not a thin strip on a phone."""
+    """600x450, portrait above the name, so the header is not a thin strip on a phone."""
     t = THEMES[mode]
     out = [
-        '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="580" viewBox="0 0 600 580">',
+        '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="450" viewBox="0 0 600 450">',
         "<title>Vitor Pinheiro, AI/ML Software Engineer</title>",
         f"<style>text{{font-family:{SANS}}} .m{{font-family:{MONO}}}</style>",
-        f'<rect x="2" y="2" width="596" height="576" rx="24" fill="{t["bg"]}" stroke="{t["edge"]}" stroke-width="4"/>',
-        f'<g transform="translate(110 30) scale({380 / 168:.4f}) translate(-18 -16)">',
+        f'<rect x="2" y="2" width="596" height="446" rx="24" fill="{t["bg"]}" stroke="{t["edge"]}" stroke-width="4"/>',
+        f'<g transform="translate(175 30) scale({250 / 168:.4f}) translate(-18 -16)">',
         f'<rect x="18" y="16" width="168" height="168" rx="10" fill="{t["chip"]}" stroke="{t["accent"]}" stroke-width="2"/>',
         portrait(mode, t["ink"]),
         "</g>",
-        f'<text x="300" y="488" text-anchor="middle" font-size="62" font-weight="800" fill="{t["ink"]}">Vitor Pinheiro</text>',
-        f'<text x="300" y="540" text-anchor="middle" font-size="36" font-weight="700" fill="{t["accent"]}">AI/ML Software Engineer</text>',
+        f'<text x="300" y="358" text-anchor="middle" font-size="62" font-weight="800" fill="{t["ink"]}">Vitor Pinheiro</text>',
+        f'<text x="300" y="410" text-anchor="middle" font-size="36" font-weight="700" fill="{t["accent"]}">AI/ML Software Engineer</text>',
         "</svg>",
     ]
     return "\n".join(out)
