@@ -1,6 +1,8 @@
 <div align="center">
 
 <picture>
+  <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="assets/header-phone-dark.svg">
+  <source media="(max-width: 600px)" srcset="assets/header-phone-light.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="assets/header-light.svg">
   <img src="assets/header-light.svg" width="840" alt="Vitor Pinheiro, AI/ML Software Engineer">
