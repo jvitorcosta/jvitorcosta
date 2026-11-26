@@ -40,7 +40,7 @@
 ## Lately
 
 <p align="center">
-  <a href="https://spotify-now-playing-ashen-two.vercel.app/redirect"><picture><source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="assets/lately-spotify-dark.svg"><source media="(max-width: 600px)" srcset="assets/lately-spotify-light.svg"><source media="(prefers-color-scheme: dark)" srcset="assets/lately-spotify-wide-dark.svg"><img src="assets/lately-spotify-wide-light.svg" width="838" alt="The last song I listened to, on Spotify"></picture></a>
+  <a href="https://spotify-now-playing-ashen-two.vercel.app/redirect"><picture><source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="https://spotify-now-playing-ashen-two.vercel.app/api/card.svg?theme=dark"><source media="(max-width: 600px)" srcset="https://spotify-now-playing-ashen-two.vercel.app/api/card.svg?theme=light"><source media="(prefers-color-scheme: dark)" srcset="https://spotify-now-playing-ashen-two.vercel.app/api/card.svg?theme=dark&amp;wide=1"><img src="https://spotify-now-playing-ashen-two.vercel.app/api/card.svg?theme=light&amp;wide=1" width="838" alt="What I am listening to, or played last, on Spotify"></picture></a>
   <br>
   <a href="https://letterboxd.com/zubu/"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/lately-letterboxd-dark.svg"><img src="assets/lately-letterboxd-light.svg" width="414" alt="The last film I watched, on Letterboxd"></picture></a>
   <a href="https://myanimelist.net/animelist/yulong17"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/lately-myanimelist-dark.svg"><img src="assets/lately-myanimelist-light.svg" width="414" alt="The anime I am watching, on MyAnimeList"></picture></a>
@@ -49,4 +49,4 @@
   <a href="https://www.strava.com/athletes/150977885"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/lately-strava-dark.svg"><img src="assets/lately-strava-light.svg" width="414" alt="My latest activity, on Strava"></picture></a>
 </p>
 
-<sub>Header and skyline drawn by [scripts/profile_art.py](scripts/profile_art.py), the skyline inspired by gitskins Contribution City and Neon Skyline · the Lately cards by [scripts/lately_cards.py](scripts/lately_cards.py), after my website's Lately box, from the data my website saves · refreshed daily by GitHub Actions</sub>
+<sub>Header and skyline drawn by [scripts/profile_art.py](scripts/profile_art.py), the skyline inspired by gitskins Contribution City and Neon Skyline · the Lately cards by [scripts/lately_cards.py](scripts/lately_cards.py), after my website's Lately box, from the data my website saves · the Spotify card is drawn live by [spotify-now-playing](https://github.com/jvitorcosta/spotify-now-playing) · the rest refreshes daily with GitHub Actions</sub>
