@@ -2,11 +2,12 @@
 # requires-python = ">=3.12"
 # dependencies = []
 # ///
-"""Draw the README's Lately cards into assets/lately-*.svg, in the style of my website's Lately box.
+"""Draw the README's Lately cards into assets/lately-*.svg: my website's Lately rows, in the profile's purple.
 
-One card per account: Spotify, Letterboxd, MyAnimeList, Goodreads, Strava. The data is what my site
-already saved (data/state.json on its `state` branch), so this repo needs no tokens; the song also asks
-my now-playing endpoint for the latest track. A card is a still image, so the song reads "listened".
+One card per account (Spotify full width, then Letterboxd, MyAnimeList, Goodreads and Strava two by two),
+each in a dark and a light version. The data is what my site already saved (data/state.json on its `state`
+branch), so this repo needs no tokens; the song also asks my now-playing endpoint for the latest track.
+A card is a still image, so the song reads "listened".
 
 Run with: uv run scripts/lately_cards.py
 If a source can't be read, that card is kept and the script still exits 0.
@@ -15,8 +16,8 @@ If a source can't be read, that card is kept and the script still exits 0.
 import base64
 import html
 import json
-import textwrap
 import urllib.request
+from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 
@@ -25,9 +26,12 @@ STATE = "https://raw.githubusercontent.com/jvitorcosta/jvitorcosta.github.io/sta
 SONG = "https://spotify-now-playing-ashen-two.vercel.app/api/now-playing.json"
 UA = "Mozilla/5.0 (profile cards; +https://github.com/jvitorcosta/jvitorcosta)"
 SANS = 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif'
-# The website's Nubank-purple palette (.pal-nu in its site.css).
-BOX, INK, SHADOW, SOFT, HP, STRAVA = "#f7f0e1", "#2a0845", "#4a0478", "#e9dcc2", "#ffb703", "#c43d00"
-W, TEXT_X, WRAP = 420, 88, 29
+# The header's and skyline's purple, so the page reads as one piece.
+THEMES = {
+    "dark": dict(bg="#150d24", edge="#3b2466", ink="#efe6ff", soft="#a99bc9", accent="#b57cff", chip="#2c1b4d", strava="#ff6a26"),
+    "light": dict(bg="#f1e8ff", edge="#820ad1", ink="#2a0845", soft="#6b4a8f", accent="#820ad1", chip="#e2d2fa", strava="#b93a00"),
+}
+HALF, FULL, H, TEXT_X = 420, 840, 136, 104
 
 
 def get(url: str) -> bytes:
@@ -52,8 +56,8 @@ def duration(minutes: int) -> str:
     return f"{minutes} min" if minutes < 60 else f"{minutes // 60}h{minutes % 60:02d}"
 
 
-def wrap(text: str, width: int = WRAP, lines: int = 2) -> list[str]:
-    return textwrap.wrap(text, width, max_lines=lines, placeholder="…")
+def clip(text: str, n: int) -> str:
+    return text if len(text) <= n else text[: n - 1].rstrip() + "…"
 
 
 def data_uri(url: str) -> str:
@@ -70,7 +74,7 @@ def data_uri(url: str) -> str:
     return f"data:image/{kind};base64,{base64.b64encode(raw).decode()}"
 
 
-def pixel(text: str, x: float, y: float, size: float, fill: str = INK) -> str:
+def pixel(text: str, x: float, y: float, size: float, fill: str) -> str:
     """Text in the site's pixel font, as paths: GitHub's images can't load a web font."""
     font = json.loads((ASSETS / "pixel-font.json").read_text(encoding="utf-8"))
     scale = size / font["unitsPerEm"]
@@ -83,76 +87,75 @@ def pixel(text: str, x: float, y: float, size: float, fill: str = INK) -> str:
     return f'<g transform="translate({x} {y}) scale({scale} {-scale})" fill="{fill}">{"".join(out)}</g>'
 
 
-def icon(name: str, y: float) -> str:
-    """The site's 20x20 pixel tile for the account, framed in ink."""
+def icon(name: str, x: float, y: float) -> str:
+    """The site's 20x20 pixel tile for the account."""
     svg = (ASSETS / "icons" / f"{name}.svg").read_text(encoding="utf-8")
     inner = svg[svg.index(">") + 1 : svg.rindex("</svg>")]
     if "<title>" in inner:
         inner = inner[inner.index("</title>") + 8 :]
-    return (
-        f'<svg x="354" y="{y}" width="42" height="42" viewBox="0 0 20 20" shape-rendering="crispEdges">{inner}</svg>'
-        f'<rect x="354" y="{y}" width="42" height="42" fill="none" stroke="{INK}" stroke-width="2"/>'
-    )
+    return f'<svg x="{x}" y="{y}" width="30" height="30" viewBox="0 0 20 20" shape-rendering="crispEdges">{inner}</svg>'
 
 
-def card(
-    service: str,
-    label: str,
-    title: str,
-    details: list[str],
-    *,
-    picture: str = "",
-    emoji: str = "",
-    tall: bool = False,
-    review: str = "",
-    progress: float | None = None,
-    link_text: str = "",
-) -> str:
-    """One website-style box: picture, pixel label, bold title, detail lines, the account's pixel tile."""
-    body = [pixel(label, TEXT_X, 32, 12)]
-    y = 56
-    for line in wrap(title):
-        body.append(f'<text x="{TEXT_X}" y="{y}" font-size="17" font-weight="700">{esc(line)}</text>')
-        y += 22
-    for line in details:
-        body.append(f'<text x="{TEXT_X}" y="{y}" font-size="15">{esc(line)}</text>')
-        y += 21
-    if review:
-        for line in wrap(f"“{review}”", WRAP + 4):
-            body.append(f'<text x="{TEXT_X}" y="{y}" font-size="15" font-style="italic">{esc(line)}</text>')
-            y += 21
-    if progress is not None:
-        body.append(
-            f'<rect x="{TEXT_X}" y="{y - 10}" width="160" height="10" fill="{BOX}" stroke="{INK}" stroke-width="2"/>'
-            f'<rect x="{TEXT_X + 1}" y="{y - 9}" width="{158 * min(max(progress, 0), 1):.0f}" height="8" fill="{HP}"/>'
-        )
-        y += 16
-    if link_text:
-        body.append(
-            f'<text x="{TEXT_X}" y="{y}" font-size="15" font-weight="700" fill="{STRAVA}" '
-            f'text-decoration="underline">{esc(link_text)}</text>'
-        )
-        y += 21
-    th = 78 if tall else 54
-    height = max(y + 2, th + 40)
-    ty = (height - 6 - th) / 2
-    art = f'<rect x="18" y="{ty}" width="54" height="{th}" fill="{SOFT}"/>'
-    if picture:
+@dataclass
+class Card:
+    """What one account's card says. Every card has the same slots, so they line up in the grid."""
+
+    service: str
+    label: str
+    title: str
+    detail: str
+    note: str = ""  # an italic third line
+    progress: float | None = None  # or a progress bar there
+    link: str = ""  # or a link text there
+    picture: str = ""
+    emoji: str = ""
+
+
+def draw(c: Card, mode: str, width: int = HALF) -> str:
+    t = THEMES[mode]
+    square = c.service == "spotify"
+    pw = 104 if square else 70
+    x = 16 + pw + 18 if square else TEXT_X
+    chars = int((width - x - 16) / 10.4)
+    art = f'<rect x="16" y="16" width="{pw}" height="104" rx="6" fill="{t["chip"]}"/>'
+    if c.picture:
         art += (
-            f'<image x="18" y="{ty}" width="54" height="{th}" preserveAspectRatio="xMidYMid slice" '
-            f'href="{picture}"/>'
+            f'<image x="16" y="16" width="{pw}" height="104" preserveAspectRatio="xMidYMid slice" '
+            f'clip-path="url(#art)" href="{c.picture}"/>'
         )
-    elif emoji:
-        art += f'<text x="45" y="{ty + th / 2 + 10}" font-size="28" text-anchor="middle">{esc(emoji)}</text>'
-    art += f'<rect x="18" y="{ty}" width="54" height="{th}" fill="none" stroke="{INK}" stroke-width="3"/>'
+    elif c.emoji:
+        art += f'<text x="{16 + pw / 2}" y="81" font-size="36" text-anchor="middle">{esc(c.emoji)}</text>'
+    body = [
+        pixel(c.label, x, 36, 11, t["accent"]),
+        f'<text x="{x}" y="66" font-size="19" font-weight="700" fill="{t["ink"]}">{esc(clip(c.title, chars))}</text>',
+        f'<text x="{x}" y="91" font-size="15" fill="{t["soft"]}">{esc(clip(c.detail, chars + 8))}</text>',
+    ]
+    if c.progress is not None:
+        track = min(width - x - 20, 200)
+        done = track * min(max(c.progress, 0), 1)
+        body.append(
+            f'<rect x="{x}" y="106" width="{track}" height="8" rx="4" fill="{t["chip"]}"/>'
+            f'<rect x="{x}" y="106" width="{done:.0f}" height="8" rx="4" fill="{t["accent"]}"/>'
+        )
+    elif c.link:
+        body.append(
+            f'<text x="{x}" y="115" font-size="14" font-weight="700" fill="{t["strava"]}" '
+            f'text-decoration="underline">{esc(c.link)}</text>'
+        )
+    elif c.note:
+        body.append(
+            f'<text x="{x}" y="115" font-size="14" font-style="italic" fill="{t["soft"]}">'
+            f"{esc(clip(c.note, chars + 8))}</text>"
+        )
     return (
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{height}" viewBox="0 0 {W} {height}">\n'
-        f"<title>{esc(label.title())}: {esc(title)}</title>\n"
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{H}" viewBox="0 0 {width} {H}">\n'
+        f"<title>{esc(c.label.title())}: {esc(c.title)}</title>\n"
         f"<style>text{{font-family:{SANS}}}</style>\n"
-        f'<rect x="8" y="8" width="410" height="{height - 8}" rx="4" fill="{SHADOW}"/>\n'
-        f'<rect x="2" y="2" width="410" height="{height - 8}" rx="4" fill="{BOX}" stroke="{INK}" stroke-width="3"/>\n'
-        f'<g fill="{INK}">{art}{"".join(body)}</g>\n'
-        f"{icon(service, (height - 6 - 42) / 2)}\n"
+        f'<defs><clipPath id="art"><rect x="16" y="16" width="{pw}" height="104" rx="6"/></clipPath></defs>\n'
+        f'<rect x="1.5" y="1.5" width="{width - 3}" height="{H - 3}" rx="12" fill="{t["bg"]}" '
+        f'stroke="{t["edge"]}" stroke-width="2"/>\n'
+        f"{art}{''.join(body)}\n"
+        f"{icon(c.service, width - 46, 16)}\n"
         "</svg>\n"
     )
 
@@ -160,7 +163,7 @@ def card(
 # ---------- one builder per account ---------------------------------------------------------------
 
 
-def spotify(state: dict) -> str:
+def spotify(state: dict) -> Card:
     try:
         song = json.loads(get(SONG))
         if not song.get("title"):
@@ -169,62 +172,58 @@ def spotify(state: dict) -> str:
         print(f"::warning::live song not read: {exc}")
         song = state["song"]
     picture = data_uri(song.get("cover_data") or song.get("cover") or "")
-    return card("spotify", "listened", song["title"], wrap(song.get("artist", ""), WRAP + 4, 1), picture=picture)
+    return Card("spotify", "listened", song["title"], song.get("artist", ""), picture=picture)
 
 
-def letterboxd(state: dict) -> str:
+def letterboxd(state: dict) -> Card:
     film = state["film"]
     title = f"{film['title']} ({film['year']})" if film.get("year") else film["title"]
     rating = film.get("rating")
     stars = "" if rating is None else "★" * int(rating) + ("½" if rating - int(rating) >= 0.5 else "")
     marks = " ".join(m for m in (stars, "♥" if film.get("liked") else "") if m)
     detail = " · ".join(m for m in (marks, day(film.get("watched", ""))) if m)
-    return card(
-        "letterboxd", "watched", title, [detail], picture=data_uri(film.get("poster", "")), tall=True,
-        review=film.get("review", ""),
-    )
+    review = f"“{film['review']}”" if film.get("review") else ""
+    return Card("letterboxd", "watched", title, detail, note=review, picture=data_uri(film.get("poster", "")))
 
 
-def myanimelist(state: dict) -> str:
+def myanimelist(state: dict) -> Card:
     anime = state["anime"]
     progress = None
     if not anime.get("watching"):
         score = f"★ {anime['score']}/10" if anime.get("score") else ""
         detail = " · ".join(m for m in (score, day(anime.get("date", ""))) if m)
     elif anime.get("episodes"):
-        detail = f"ep {anime['episode']} of {anime['episodes']}"
+        detail = f"episode {anime['episode']} of {anime['episodes']}"
         progress = anime["episode"] / anime["episodes"]
     else:
-        detail = f"ep {anime['episode']}"
-    return card(
-        "myanimelist", "watching" if anime.get("watching") else "finished", anime["title"], [detail],
-        picture=data_uri(anime.get("cover", "")), tall=True, progress=progress,
+        detail = f"episode {anime['episode']}"
+    label = "watching" if anime.get("watching") else "finished"
+    return Card(
+        "myanimelist", label, anime["title"], detail, progress=progress, picture=data_uri(anime.get("cover", ""))
     )
 
 
-def goodreads(state: dict) -> str:
+def goodreads(state: dict) -> Card:
     book = state["book"]
-    details = wrap(book.get("author", ""), WRAP + 4, 1)
+    detail = book.get("author", "")
     progress = None
     if book.get("page") is not None and book.get("pages"):
-        details.append(f"p. {book['page']} of {book['pages']}")
+        detail += f" · p. {book['page']} of {book['pages']}"
         progress = book["page"] / book["pages"]
-    return card(
-        "goodreads", "finished" if book.get("finished") else "reading", book["title"], details,
-        picture=data_uri(book.get("cover", "")), tall=True, progress=progress,
-    )
+    label = "finished" if book.get("finished") else "reading"
+    title = book["title"].split(":")[0]
+    return Card("goodreads", label, title, detail, progress=progress, picture=data_uri(book.get("cover", "")))
 
 
-def strava(state: dict) -> str:
+def strava(state: dict) -> Card:
     act = state["activity"]
-    if act.get("distance_km"):  # 0 or missing means no distance: show the duration in the title
-        title, parts = f"{act['title']} · {act['distance_km']:.1f} km", [duration(act["moving_min"])]
-    else:
-        title, parts = f"{act['title']} · {duration(act['moving_min'])}", []
+    parts = []
+    if act.get("distance_km"):  # 0 or missing means no distance (weights, boxing)
+        parts.append(f"{act['distance_km']:.1f} km")
+    parts.append(duration(act["moving_min"]))
     parts += [p for p in (act.get("detail"), day(act.get("date", ""))) if p]
-    return card(
-        "strava", "moved", title, wrap(" · ".join(parts), WRAP + 4),
-        emoji=act.get("emoji", ""), link_text="View on Strava",
+    return Card(
+        "strava", "moved", act["title"], " · ".join(parts), link="View on Strava", emoji=act.get("emoji", "")
     )
 
 
@@ -238,12 +237,17 @@ def main() -> None:
         print(f"::warning::site data not read, cards kept: {exc}")
         return
     for build in CARDS:
-        name = f"lately-{build.__name__}.svg"
+        name = build.__name__
         try:
-            (ASSETS / name).write_text(build(state), encoding="utf-8", newline="\n")
-            print("wrote", name)
-        except Exception as exc:  # noqa: BLE001 - one broken source keeps only its own card
-            print(f"::warning::{name} not updated: {exc}")
+            card = build(state)
+            files = {f"lately-{name}-{mode}.svg": draw(card, mode) for mode in THEMES}
+            if name == "spotify":  # full width on a desktop, the half-size card on a phone
+                files |= {f"lately-{name}-wide-{mode}.svg": draw(card, mode, FULL) for mode in THEMES}
+            for file, svg in files.items():
+                (ASSETS / file).write_text(svg, encoding="utf-8", newline="\n")
+                print("wrote", file)
+        except Exception as exc:  # noqa: BLE001 - one broken source keeps only its own cards
+            print(f"::warning::{name} cards not updated: {exc}")
 
 
 if __name__ == "__main__":
