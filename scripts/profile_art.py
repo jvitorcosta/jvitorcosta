@@ -2,7 +2,7 @@
 # requires-python = ">=3.12"
 # dependencies = []
 # ///
-"""Draw the README's generated art into assets/: trainer-sheet header and commit skyline.
+"""Draw the README's generated art into assets/: the header and the commit skyline.
 
 Run with: uv run scripts/profile_art.py
 Env: GH_USER (default jvitorcosta), GITHUB_TOKEN (unused now; kept for the API rate limit if needed).
@@ -73,19 +73,22 @@ def portrait(mode: str, ink: str) -> str:
 
 
 def header(mode: str) -> str:
+    """840x300, drawn large so the name still reads when a phone scales it to about 40%."""
     t = THEMES[mode]
     out = [
-        '<svg xmlns="http://www.w3.org/2000/svg" width="520" height="200" viewBox="0 0 520 200">',
-        "<title>Vitor Pinheiro, AI/ML engineer: trainer sheet</title>",
+        '<svg xmlns="http://www.w3.org/2000/svg" width="840" height="300" viewBox="0 0 840 300">',
+        "<title>Vitor Pinheiro, AI/ML Software Engineer</title>",
         f"<style>text{{font-family:{SANS}}} .m{{font-family:{MONO}}}</style>",
-        f'<rect x="1.5" y="1.5" width="517" height="197" rx="14" fill="{t["bg"]}" stroke="{t["edge"]}" stroke-width="3"/>',
-        f'<rect x="18" y="16" width="168" height="168" rx="10" fill="{t["chip"]}" stroke="{t["accent"]}" stroke-width="3"/>',
+        f'<rect x="2" y="2" width="836" height="296" rx="20" fill="{t["bg"]}" stroke="{t["edge"]}" stroke-width="4"/>',
+        # The portrait is laid out in a 168x168 box at (18, 16); scale that box up to 260x260 at (20, 20).
+        f'<g transform="translate(20 20) scale({260 / 168:.4f}) translate(-18 -16)">',
+        f'<rect x="18" y="16" width="168" height="168" rx="10" fill="{t["chip"]}" stroke="{t["accent"]}" stroke-width="2.5"/>',
         portrait(mode, t["ink"]),
-        f'<text class="m" x="212" y="76" font-size="14" letter-spacing="3" fill="{t["soft"]}">TRAINER SHEET</text>',
-        f'<text x="212" y="116" font-size="32" font-weight="800" fill="{t["ink"]}">Vitor Pinheiro</text>',
-        f'<text x="212" y="144" font-size="19" font-weight="700" fill="{t["accent"]}">AI/ML Engineer · Dark type</text>',
+        "</g>",
+        f'<text x="316" y="148" font-size="60" font-weight="800" fill="{t["ink"]}">Vitor Pinheiro</text>',
+        f'<text x="316" y="200" font-size="34" font-weight="700" fill="{t["accent"]}">AI/ML Software Engineer</text>',
+        "</svg>",
     ]
-    out.append("</svg>")
     return "\n".join(out)
 
 
