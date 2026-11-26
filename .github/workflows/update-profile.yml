@@ -22,13 +22,8 @@ jobs:
 
       - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
 
-      - name: Refresh the Letterboxd card
-        run: uv run scripts/letterboxd_card.py
-        env:
-          LETTERBOXD_USER: zubu
-
-      - name: Refresh the Goodreads and Strava cards
-        run: uv run scripts/life_cards.py
+      - name: Refresh the Lately cards
+        run: uv run scripts/lately_cards.py
 
       - name: Redraw the header and commit skyline
         run: uv run scripts/profile_art.py
@@ -36,16 +31,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_USER: ${{ github.repository_owner }}
 
-      - name: Refresh the now-line and the projects list
-        run: uv run scripts/update_readme.py
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_USER: ${{ github.repository_owner }}
-
       - uses: stefanzweifel/git-auto-commit-action@d0b01107b5db882071f96de5dd4b54961ea93f4c # v7.2.1
         with:
-          commit_message: "chore: refresh profile art, now-line and projects"
-          file_pattern: README.md assets/*.svg
+          commit_message: "chore: refresh profile art and cards"
+          file_pattern: assets/*.svg
           commit_user_name: github-actions[bot]
           commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
           commit_author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>

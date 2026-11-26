@@ -133,48 +133,58 @@ def contributions() -> list[list[int]]:
     return [flat[i : i + 7] for i in range(0, len(flat), 7)]
 
 
-def skyline(mode: str, weeks: list[list[int]]) -> str:
+def colours(mode: str) -> dict:
     dark = mode == "dark"
-    bg, ground = ("#150d24", "#3b2466") if dark else ("#f1e8ff", "#820ad1")
-    far = "#1d1233" if dark else "#e0d0f7"
-    body = "#0f0919" if dark else "#fbf7ff"
-    dim = "#33214f" if dark else "#d3c0f0"
-    txt = "#a99bc9" if dark else "#6b4a8f"
-    W, H, base = 840, 200, 164
-    n = len(weeks)
-    slot = (W - 40) / n
-    bw = slot * 0.74
-    totals = [sum(w) for w in weeks]
-    peak = max(max(totals), 1)
-    total = sum(totals)
-    active = sum(1 for w in weeks for d in w if d)
-    out = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">',
+    return dict(
+        bg="#150d24" if dark else "#f1e8ff",
+        ground="#3b2466" if dark else "#820ad1",
+        far="#1d1233" if dark else "#e0d0f7",
+        body="#0f0919" if dark else "#fbf7ff",
+        dim="#33214f" if dark else "#d3c0f0",
+        txt="#a99bc9" if dark else "#6b4a8f",
+    )
+
+
+def svg_open(mode: str, weeks: list[list[int]], width: int, height: int) -> list[str]:
+    total = sum(sum(w) for w in weeks)
+    return [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">',
         f"<title>Commit skyline: {total} contributions in the last year</title>",
         "<defs>",
         '<filter id="glow" x="-60%" y="-30%" width="220%" height="160%"><feGaussianBlur stdDeviation="2.6" result="b"/>'
         '<feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>',
-        f'<linearGradient id="neon" x1="0" x2="1"><stop offset="0" stop-color="{BLUE}"/><stop offset="1" stop-color="{ORANGE}"/></linearGradient>',
+        # In user space, so one gradient spans the chart and a flat cap still gets a colour.
+        f'<linearGradient id="neon" gradientUnits="userSpaceOnUse" x1="0" x2="{width}">'
+        f'<stop offset="0" stop-color="{BLUE}"/><stop offset="1" stop-color="{ORANGE}"/></linearGradient>',
         "</defs>",
-        f'<rect width="{W}" height="{H}" rx="14" fill="{bg}"/>',
+        f'<rect width="{width}" height="{height}" rx="14" fill="{colours(mode)["bg"]}"/>',
     ]
+
+
+def street(mode: str, weeks: list[list[int]], peak: int, width: int, base: int, offset: int, count: int) -> list[str]:
+    """One row of buildings on its ground line: weeks[i] is week offset + i of count."""
+    c = colours(mode)
+    slot = (width - 40) / len(weeks)
+    bw = slot * 0.74
+    out = []
     # Far skyline: a fixed, deterministic silhouette for depth.
     x = 20.0
-    i = 0
-    while x < W - 30:
+    i = offset
+    while x < width - 30:
         w = 16 + (i * 7) % 14
+        w = min(w, width - 20 - x)
         h = 22 + (i * 37) % 46
-        out.append(f'<rect x="{x:.1f}" y="{base - h}" width="{w}" height="{h}" fill="{far}"/>')
+        out.append(f'<rect x="{x:.1f}" y="{base - h}" width="{w:.0f}" height="{h}" fill="{c["far"]}"/>')
         x += w + 2
         i += 1
     for k, week in enumerate(weeks):
-        t = totals[k]
+        t = sum(week)
         h = 5 + 118 * math.sqrt(t / peak) if t else 5
         x0 = 20 + k * slot + (slot - bw) / 2
-        frac = k / max(n - 1, 1)
-        stroke = "url(#neon)" if t else dim
+        frac = (offset + k) / max(count - 1, 1)
+        stroke = "url(#neon)" if t else c["dim"]
         glow = ' filter="url(#glow)"' if t else ""
-        out.append(f'<rect x="{x0:.1f}" y="{base - h:.1f}" width="{bw:.1f}" height="{h:.1f}" fill="{body}"/>')
+        out.append(f'<rect x="{x0:.1f}" y="{base - h:.1f}" width="{bw:.1f}" height="{h:.1f}" fill="{c["body"]}"/>')
         out.append(f'<rect x="{x0:.1f}" y="{base - h:.1f}" width="{bw:.1f}" height="3" fill="{stroke}"{glow}/>')
         # One lit window per active day, stacked from the ground, brighter for busier days.
         lit = [d for d in week if d]
@@ -187,11 +197,38 @@ def skyline(mode: str, weeks: list[list[int]]) -> str:
             out.append(
                 f'<rect x="{x0 + bw * 0.22:.1f}" y="{wy}" width="{bw * 0.56:.1f}" height="4" fill="{col}" opacity="{op:.2f}"/>'
             )
-    out.append(f'<rect x="20" y="{base}" width="{W - 40}" height="2" fill="{ground}"/>')
+    out.append(f'<rect x="20" y="{base}" width="{width - 40}" height="2" fill="{c["ground"]}"/>')
+    return out
+
+
+def totals(weeks: list[list[int]]) -> tuple[int, int]:
+    return sum(sum(w) for w in weeks), sum(1 for w in weeks for d in w if d)
+
+
+def skyline(mode: str, weeks: list[list[int]]) -> str:
+    peak = max(max(sum(w) for w in weeks), 1)
+    total, active = totals(weeks)
+    out = svg_open(mode, weeks, 840, 200)
+    out += street(mode, weeks, peak, 840, 164, 0, len(weeks))
     out.append(
-        f'<text x="20" y="190" font-family="{MONO}" font-size="14" fill="{txt}">'
+        f'<text x="20" y="190" font-family="{MONO}" font-size="14" fill="{colours(mode)["txt"]}">'
         f"{total} contributions · {active} active days · last 12 months</text>"
     )
+    out.append("</svg>")
+    return "\n".join(out)
+
+
+def skyline_phone(mode: str, weeks: list[list[int]]) -> str:
+    """The same year in two rows of half the weeks, so buildings and caption stay readable on a phone."""
+    peak = max(max(sum(w) for w in weeks), 1)
+    total, active = totals(weeks)
+    half = len(weeks) // 2
+    out = svg_open(mode, weeks, 420, 350)
+    out += street(mode, weeks[:half], peak, 420, 140, 0, len(weeks))
+    out += street(mode, weeks[half:], peak, 420, 280, half, len(weeks))
+    txt = colours(mode)["txt"]
+    for y, line in ((310, f"{total} contributions"), (334, f"{active} active days · last 12 months")):
+        out.append(f'<text x="20" y="{y}" font-family="{MONO}" font-size="18" fill="{txt}">{line}</text>')
     out.append("</svg>")
     return "\n".join(out)
 
@@ -205,6 +242,8 @@ def main() -> None:
         weeks = contributions()
         write("skyline-dark.svg", skyline("dark", weeks))
         write("skyline-light.svg", skyline("light", weeks))
+        write("skyline-phone-dark.svg", skyline_phone("dark", weeks))
+        write("skyline-phone-light.svg", skyline_phone("light", weeks))
     except Exception as e:  # noqa: BLE001 - keep the old art on any failure
         print("skyline kept:", e)
 
