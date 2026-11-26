@@ -1,9 +1,11 @@
 <div align="center">
 
 <picture>
+  <source media="(max-width: 600px) and (prefers-color-scheme: dark)" srcset="assets/header-phone-dark.svg">
+  <source media="(max-width: 600px)" srcset="assets/header-phone-light.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="assets/header-light.svg">
-  <img src="assets/header-light.svg" width="480" alt="Trainer sheet. Vitor Pinheiro, AI/ML engineer, Dark type.">
+  <img src="assets/header-light.svg" width="840" alt="Vitor Pinheiro, AI/ML Software Engineer">
 </picture>
 
 **🌐 [Portfolio](https://jvitorcosta.github.io)** · **💼 [LinkedIn](https://www.linkedin.com/in/jvpro/)** · **📄 [Resume (PDF)](https://jvitorcosta.github.io/Vitor_Pinheiro_Resume.pdf)** · ✉️ joaovpro17@gmail.com
