@@ -20,7 +20,7 @@
 - **[or-solver-streamlit](https://github.com/jvitorcosta/or-solver-streamlit)**: SolvedOR, my bachelor thesis: an app that teaches Operations Research · <sub>Python, OR-Tools · pushed Nov 17</sub> · [live](https://solvedor.streamlit.app)
 - **[timeseries-analysis-streamlit](https://github.com/jvitorcosta/timeseries-analysis-streamlit)**: shows where a daily forecast goes wrong: by series, weekday, holiday and benchmark · <sub>Python, Plotly · pushed Nov 14</sub> · [live](https://forecast-error-analysis.streamlit.app)
 - **[ask-vitor](https://github.com/jvitorcosta/ask-vitor)**: ask a local LLM about me; it answers only from my CV and says so when it doesn't know · <sub>FastAPI, Ollama · pushed Nov 14</sub>
-- **[python-uv-claude-template](https://github.com/jvitorcosta/python-uv-claude-template)**: how I start every Python project · <sub>Python, uv · pushed Nov 5</sub>
+- **[python-uv-claude-template](https://github.com/jvitorcosta/python-uv-claude-template)**: how I start every Python project · <sub>Python, uv · pushed Nov 26</sub>
 <!-- PROJECTS:END -->
 
 ## Last 12 months of commits
