@@ -59,16 +59,20 @@ THEMES = {
 
 
 def portrait(mode: str, ink: str) -> str:
-    """The coloured ASCII portrait: one <tspan> per row (textLength keeps the width the same on every font),
-    with nested tspans for runs of one colour."""
+    """The coloured ASCII portrait: one <tspan> per row, with nested tspans for runs of one colour. Every
+    character gets its own x, so it stays inside its frame whatever monospace font the device has
+    (where textLength is ignored, the face spilled over the border)."""
     rows = json.loads((ASSETS / f"portrait-{mode}.json").read_text(encoding="utf-8"))
     cols = max(sum(len(t) for t, _ in runs) for runs in rows)
-    width, step = 146, 6.0
+    pitch, step, glyph = 2.7, 6.0, 3.4
+    # Centred in the 168x168 box at (18, 16): its middle is (102, 100); a capital rises 4.4 above the baseline.
+    left = 102 - ((cols - 1) * pitch + glyph) / 2
+    top = 100 - ((len(rows) - 1) * step - 4.4) / 2
     out = []
     for i, runs in enumerate(rows):
         line = "".join(f'<tspan fill="{c}">{esc(t)}</tspan>' for t, c in runs)
-        n = sum(len(t) for t, _ in runs)
-        out.append(f'<tspan x="27" y="{28 + i * step:.1f}" textLength="{width * n / cols:.1f}" lengthAdjust="spacing">{line}</tspan>')
+        xs = " ".join(f"{left + k * pitch:.1f}" for k in range(sum(len(t) for t, _ in runs)))
+        out.append(f'<tspan x="{xs}" y="{top + i * step:.1f}">{line}</tspan>')
     return f'<text class="m" font-size="6.0" fill="{ink}" xml:space="preserve" aria-hidden="true">{"".join(out)}</text>'
 
 
