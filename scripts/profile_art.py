@@ -60,8 +60,8 @@ THEMES = {
 
 def portrait(mode: str, ink: str) -> str:
     """The coloured ASCII portrait: one <tspan> per row, with nested tspans for runs of one colour. Every
-    character gets its own x, so it stays inside its frame whatever monospace font the device has (iPhones
-    ignored textLength, and the face spilled over the border)."""
+    character gets its own x, so it stays inside its frame whatever monospace font the device has
+    (where textLength is ignored, the face spilled over the border)."""
     rows = json.loads((ASSETS / f"portrait-{mode}.json").read_text(encoding="utf-8"))
     cols = max(sum(len(t) for t, _ in runs) for runs in rows)
     pitch, step, glyph = 2.7, 6.0, 3.4
