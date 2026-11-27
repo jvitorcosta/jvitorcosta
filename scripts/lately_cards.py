@@ -211,9 +211,11 @@ def goodreads(state: dict) -> Card:
 def strava(state: dict) -> Card:
     act = state["activity"]
     if act.get("distance_km"):  # 0 or missing means no distance (weights, boxing): show the duration
-        title, parts = f"{act['title']} · {act['distance_km']:.1f} km", [duration(act["moving_min"])]
+        amount, parts = f"{act['distance_km']:.1f} km", [duration(act["moving_min"])]
     else:
-        title, parts = f"{act['title']} · {duration(act['moving_min'])}", []
+        amount, parts = duration(act["moving_min"]), []
+    # No-break spaces: a second line takes the last word along, never a lone "min" or "km".
+    title = f"{act['title']}\xa0·\xa0" + amount.replace(" ", "\xa0")
     parts += [p for p in (act.get("detail"), day(act.get("date", ""))) if p]
     return Card(
         "strava", "exercised", title, " · ".join(parts), link="View on Strava", emoji=act.get("emoji", "")
